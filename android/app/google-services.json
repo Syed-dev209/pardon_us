@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "647268017952",
+    "firebase_url": "https://pardon-us-6a9be.firebaseio.com",
+    "project_id": "pardon-us-6a9be",
+    "storage_bucket": "pardon-us-6a9be.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647268017952:android:10e61fe6a4e4822a875945",
+        "android_client_info": {
+          "package_name": "ilhan.com.pardon_us"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647268017952-phq4bcr0bvevgi3hqa5n3gtqv3p6u0mu.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ilhan.com.pardon_us",
+            "certificate_hash": "52cd9f82a78c0100c87dc7d07624b724784fc332"
+          }
+        },
+        {
+          "client_id": "647268017952-ipcfaesqe00dr7oh1qqe8dv5ee27ihfv.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQw5tET5LS8yLJFuP3PTVjH4Klr_IieM4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647268017952-ipcfaesqe00dr7oh1qqe8dv5ee27ihfv.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

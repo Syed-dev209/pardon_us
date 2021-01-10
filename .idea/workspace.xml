@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kQLfdkLQArPQBj9JRwr7HefZ1J" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="dart.analysis.tool.window.force.activate" value="false" />
+    <property name="dart.analysis.tool.window.visible" value="false" />
+    <property name="io.flutter.reload.alreadyRun" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Fiverr Projects/Self Pass/client1" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us\web" />
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us\web\icons" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ilhan flutter\New Fyp\android project\pardon_us\images" />
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us" />
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us\android\app" />
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us\android\app\src\main\res\drawable" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="" />
+      <created>1605627972830</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605627972830</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606168882443">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606168882443" />
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1609922625180">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606911144708" />
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1609922625180" />
+    <state width="1323" height="319" key="GridCell.Tab.0.bottom" timestamp="1606821407962">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="502" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821575" />
+    <state width="1323" height="319" key="GridCell.Tab.0.center" timestamp="1606821407962">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="502" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821575" />
+    <state width="1323" height="319" key="GridCell.Tab.0.left" timestamp="1606821407962">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="502" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821574" />
+    <state width="1323" height="319" key="GridCell.Tab.0.right" timestamp="1606821407962">
+      <screen x="0" y="0" width="1366" height="728" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="502" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821575" />
+    <state x="781" y="342" key="SettingsEditor" timestamp="1606083122883">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1606083122883" />
+    <state x="976" y="524" key="com.intellij.ide.util.TipDialog" timestamp="1606665070560">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="976" y="524" key="com.intellij.ide.util.TipDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606665070560" />
+    <state x="976" y="298" width="607" height="804" key="find.popup" timestamp="1606083046379">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="976" y="298" width="607" height="804" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606083046379" />
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605656583802">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605656583802" />
+  </component>
+</project>

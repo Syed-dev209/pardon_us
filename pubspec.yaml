@@ -33,6 +33,7 @@ dependencies:
   url_launcher: ^5.7.10
   firebase_auth_web: ^0.3.2
   cloud_firestore: ^0.14.3
+  agora_rtc_engine: ^3.2.1
 
 dev_dependencies:
   flutter_test:

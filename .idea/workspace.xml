@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="" />
+    <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/pardon_us_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/pardon_us_android.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,7 +25,13 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="ProjectId" id="1kQLfdkLQArPQBj9JRwr7HefZ1J" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -25,8 +41,8 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../Fiverr Projects/Self Pass/client1" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
@@ -59,35 +75,35 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606168882443" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1609922625180">
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1611869807253">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606911144708" />
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1609922625180" />
-    <state width="1323" height="319" key="GridCell.Tab.0.bottom" timestamp="1606821407962">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="319" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="502" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821575" />
-    <state width="1323" height="319" key="GridCell.Tab.0.center" timestamp="1606821407962">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="319" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="502" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821575" />
-    <state width="1323" height="319" key="GridCell.Tab.0.left" timestamp="1606821407962">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="319" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="502" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821574" />
-    <state width="1323" height="319" key="GridCell.Tab.0.right" timestamp="1606821407962">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state width="1323" height="319" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="502" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1606604821575" />
-    <state x="781" y="342" key="SettingsEditor" timestamp="1606083122883">
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1611869807253" />
+    <state width="2517" height="645" key="GridCell.Tab.0.bottom" timestamp="1611869784313">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1606083122883" />
+    <state width="1323" height="319" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="645" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784313" />
+    <state width="2517" height="645" key="GridCell.Tab.0.center" timestamp="1611869784313">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="645" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784313" />
+    <state width="2517" height="645" key="GridCell.Tab.0.left" timestamp="1611869784312">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="645" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784312" />
+    <state width="2517" height="645" key="GridCell.Tab.0.right" timestamp="1611869784313">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="1323" height="319" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
+    <state width="2517" height="645" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784313" />
+    <state x="781" y="342" key="SettingsEditor" timestamp="1611049084919">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1611049084919" />
     <state x="976" y="524" key="com.intellij.ide.util.TipDialog" timestamp="1606665070560">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

@@ -1,4 +1,9 @@
+import 'dart:async';
+
+import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
+import 'package:pardon_us/screens/callPage.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class MeetingScreen extends StatefulWidget {
   @override
@@ -6,6 +11,15 @@ class MeetingScreen extends StatefulWidget {
 }
 
 class _MeetingScreenState extends State<MeetingScreen> {
+  final _channelController = TextEditingController();
+  bool _validateError = false;
+  ClientRole _role = ClientRole.Broadcaster;
+  @override
+  void dispose() {
+    // dispose input controller
+    _channelController.dispose();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -14,6 +28,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
         child: Column(
           children: [
             TextFormField(
+              controller: _channelController,
               decoration:  InputDecoration(
                   labelText: 'Meeting Code',
                   border: OutlineInputBorder(),
@@ -29,8 +44,9 @@ class _MeetingScreenState extends State<MeetingScreen> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(3.0)
               ),
-              onPressed: (){
+              onPressed: ()async{
                 print('Start meeting pressed pressed');
+                await onJoin();
               },
             ),
             SizedBox(height: 20.0,),
@@ -47,4 +63,29 @@ class _MeetingScreenState extends State<MeetingScreen> {
       ),
     );
   }
+  Future<void> onJoin() async {
+    if (_channelController.text.isNotEmpty) {
+      // Wait for the permission for camera and microphone
+      await _handleCameraAndMic();
+      //if(await Permission.camera.request().isGranted)
+      // Enter the page for live streaming and join channel using the channel name and role specified in the login page
+      await Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => CallPage(
+            channelName: _channelController.text,
+            role: _role,
+          ),
+        ),
+      );
+    }
+  }
+
+  // Ask for the permission for camera and microphone
+  Future<void> _handleCameraAndMic() async {
+     await Permission.camera.request();
+     await Permission.microphone.request();
+
+  }
 }
+

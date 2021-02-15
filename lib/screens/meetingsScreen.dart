@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:agora_rtc_engine/rtc_engine.dart';
 import 'package:flutter/material.dart';
+import 'package:pardon_us/models/userDeatils.dart';
 import 'package:pardon_us/screens/callPage.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:provider/provider.dart';
 
 class MeetingScreen extends StatefulWidget {
   @override
@@ -13,7 +15,7 @@ class MeetingScreen extends StatefulWidget {
 class _MeetingScreenState extends State<MeetingScreen> {
   final _channelController = TextEditingController();
   bool _validateError = false;
-  ClientRole _role = ClientRole.Broadcaster;
+  ClientRole _role;
   @override
   void dispose() {
     // dispose input controller
@@ -66,9 +68,17 @@ class _MeetingScreenState extends State<MeetingScreen> {
   Future<void> onJoin() async {
     if (_channelController.text.isNotEmpty) {
       // Wait for the permission for camera and microphone
-      await _handleCameraAndMic();
+      await _handleCameraAndMic(Permission.camera);
+      await _handleCameraAndMic(Permission.microphone);
       //if(await Permission.camera.request().isGranted)
       // Enter the page for live streaming and join channel using the channel name and role specified in the login page
+      if(Provider.of<UserDetails>(context,listen: false).UserParticipantStatus=="Teacher")
+        {
+          _role=ClientRole.Broadcaster;
+        }
+      else{
+        _role=ClientRole.Audience;
+      }
       await Navigator.push(
         context,
         MaterialPageRoute(
@@ -82,10 +92,9 @@ class _MeetingScreenState extends State<MeetingScreen> {
   }
 
   // Ask for the permission for camera and microphone
-  Future<void> _handleCameraAndMic() async {
-     await Permission.camera.request();
-     await Permission.microphone.request();
-
+  Future<void> _handleCameraAndMic(Permission permission) async {
+    final status = await permission.request();
+    print(status);
   }
 }
 

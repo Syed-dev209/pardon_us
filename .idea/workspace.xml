@@ -7,9 +7,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/pardon_us_android.iml" beforeDir="false" afterPath="$PROJECT_DIR$/android/pardon_us_android.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/callPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/callPage.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/register_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/register_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,15 +47,16 @@
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\ilhan flutter\New Fyp\pardon_us\web" />
-      <recent name="E:\ilhan flutter\New Fyp\pardon_us\web\icons" />
-    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\ilhan flutter\Final Year Project\android project\pardon_us\lib\utils" />
       <recent name="D:\ilhan flutter\New Fyp\android project\pardon_us\images" />
       <recent name="E:\ilhan flutter\New Fyp\pardon_us" />
       <recent name="E:\ilhan flutter\New Fyp\pardon_us\android\app" />
       <recent name="E:\ilhan flutter\New Fyp\pardon_us\android\app\src\main\res\drawable" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us\web" />
+      <recent name="E:\ilhan flutter\New Fyp\pardon_us\web\icons" />
     </key>
   </component>
   <component name="SvnConfiguration">
@@ -71,35 +73,39 @@
     <servers />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1165" y="563" key="#Notifications" timestamp="1612776457271">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1165" y="563" key="#Notifications/0.0.2560.1400@0.0.2560.1400" timestamp="1612776457271" />
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1606168882443">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606168882443" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1611869807253">
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1612780607816">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606911144708" />
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1611869807253" />
-    <state width="2517" height="645" key="GridCell.Tab.0.bottom" timestamp="1611869784313">
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1612780607816" />
+    <state width="2500" height="559" key="GridCell.Tab.0.bottom" timestamp="1612792197117">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="645" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784313" />
-    <state width="2517" height="645" key="GridCell.Tab.0.center" timestamp="1611869784313">
+    <state width="2500" height="559" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
+    <state width="2500" height="559" key="GridCell.Tab.0.center" timestamp="1612792197117">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="645" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784313" />
-    <state width="2517" height="645" key="GridCell.Tab.0.left" timestamp="1611869784312">
+    <state width="2500" height="559" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
+    <state width="2500" height="559" key="GridCell.Tab.0.left" timestamp="1612792197117">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="645" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784312" />
-    <state width="2517" height="645" key="GridCell.Tab.0.right" timestamp="1611869784313">
+    <state width="2500" height="559" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
+    <state width="2500" height="559" key="GridCell.Tab.0.right" timestamp="1612792197117">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2517" height="645" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1611869784313" />
+    <state width="2500" height="559" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
     <state x="781" y="342" key="SettingsEditor" timestamp="1611049084919">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

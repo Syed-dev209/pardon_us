@@ -28,8 +28,10 @@
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/google_sign_in-4.5.9" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/firebase_auth_web-0.3.2+3" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.27" />
-      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.7+22" />
       <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/agora_rtc_engine-3.2.1" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/image_picker-0.6.6+5" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/flutter_webrtc-0.1.7" />
+      <root url="file://C:/flutter/.pub-cache/hosted/pub.dartlang.org/agora_flutter_webrtc-0.0.3" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

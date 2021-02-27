@@ -7,10 +7,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/callPage.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/callPage.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/login_methods.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/login_methods.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/messagesMethods.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/messagesMethods.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/register_user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/register_user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -18,7 +18,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5HR6R19304004752]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -42,7 +42,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../agora" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -81,11 +81,11 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="734" y="355" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1606168882443" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1612780607816">
+    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1614459585619">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606911144708" />
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1612780607816" />
+    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1614459585619" />
     <state width="2500" height="559" key="GridCell.Tab.0.bottom" timestamp="1612792197117">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
@@ -118,9 +118,5 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="976" y="298" width="607" height="804" key="find.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1606083046379" />
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup" timestamp="1605656583802">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="943" y="315" width="672" height="678" key="search.everywhere.popup/0.0.2560.1400@0.0.2560.1400" timestamp="1605656583802" />
   </component>
 </project>

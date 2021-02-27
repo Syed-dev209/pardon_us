@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:path/path.dart' as Path;
 import 'package:firebase_auth/firebase_auth.dart';
@@ -63,7 +64,15 @@ class LogInMethods{
 
   Future<File> chooseProfileImage()async{
     final picker = ImagePicker();
-    final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    PlatformFile pickedFile;
+   // final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final imagePicker=await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: ['png','jpg','jpeg']
+    );
+    if(imagePicker!=null){
+      pickedFile=imagePicker.files.first;
+    }
     return File(pickedFile.path);
   }
 

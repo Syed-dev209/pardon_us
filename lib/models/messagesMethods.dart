@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:file_picker/file_picker.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:path/path.dart' as Path;
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -34,7 +35,15 @@ class MessengerMethods{
 
   Future<File> chooseVideo()async{
     final picker = ImagePicker();
-    final pickedFile = await picker.getVideo(source: ImageSource.gallery);
+    PlatformFile pickedFile;
+    // final pickedFile = await picker.getImage(source: ImageSource.gallery);
+    final imagePicker=await FilePicker.platform.pickFiles(
+        type: FileType.custom,
+        allowedExtensions: ['mp4']
+    );
+    if(imagePicker!=null){
+      pickedFile=imagePicker.files.first;
+    }
     return File(pickedFile.path);
   }
 

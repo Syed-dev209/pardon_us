@@ -31,7 +31,6 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    print('app started');
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context)=>QuizModel(),),

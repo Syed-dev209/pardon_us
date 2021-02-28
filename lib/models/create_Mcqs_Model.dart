@@ -122,6 +122,7 @@ class QuizModel extends ChangeNotifier{
    DocumentReference docRef= firestore.collection('quizes').doc(Provider.of<UserDetails>(context,listen: false).currentClassCode).collection('quiz').doc(docId).collection('attemptedBy').doc();
    docRef.set(
      {
+       'type':'mcqs',
        'name':Provider.of<UserDetails>(context,listen: false).username,
        'dateTime':DateTime.now().toString(),
        'marksObtained':marksObtained,
@@ -136,12 +137,24 @@ class QuizModel extends ChangeNotifier{
   Future<bool> submitStudentQuizFile(context,String fileUrl,String docId)async{
     DocumentReference docRef=firestore.collection('quizes').doc(Provider.of<UserDetails>(context,listen: false).currentClassCode).collection('quiz').doc(docId).collection('attemptedBy').doc();
     docRef.set({
+      'type':'file',
       'name':Provider.of<UserDetails>(context,listen: false).username,
       'dateTime':DateTime.now().toString(),
       'marksObtained':'0',
       'fileUrl':fileUrl
     });
     return true;
+  }
+  Future<bool> gradeStudentFileQuiz(context,String docId,String marks,String quizDocId)async{
+    try{
+      await firestore.collection('quizes').doc(Provider.of<UserDetails>(context,listen: false).currentClassCode).collection('quiz').doc(quizDocId).collection('attemptedBy').doc(docId).update({
+        'marksObtained':marks
+      });
+      return true;
+    }
+    catch(e){
+      return false;
+    }
   }
 
   clearLists(){

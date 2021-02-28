@@ -42,7 +42,7 @@ class _AssignmentScreenState extends State<AssignmentScreen> {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    QuizCard('Students list attempted assignmnets','Date','Time','Mcqs','Show Participants',"",""),
+                    QuizCard('Students list attempted assignmnets','Date','Time','Mcqs','Show Participants',"","",false),
                   ],
                 ):
                StreamBuilder<QuerySnapshot>(

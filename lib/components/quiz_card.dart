@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pardon_us/components/alertBox.dart';
 import 'package:pardon_us/models/create_Mcqs_Model.dart';
 import 'package:pardon_us/screens/quiz_screens/mcqs_attempt_screen.dart';
 import 'package:pardon_us/animation_transition/fade_transition.dart';
@@ -12,7 +13,8 @@ import 'package:provider/provider.dart';
 class QuizCard extends StatefulWidget {
   String quizTitle,dueTime,dueDate;
   String filestatus,participantStatus,docId,imgUrl;
-  QuizCard(this.quizTitle,this.dueDate,this.dueTime,this.filestatus,this.participantStatus,this.docId,this.imgUrl);
+  bool lock;
+  QuizCard(this.quizTitle,this.dueDate,this.dueTime,this.filestatus,this.participantStatus,this.docId,this.imgUrl,this.lock);
   @override
   _QuizCardState createState() => _QuizCardState();
 }
@@ -76,7 +78,7 @@ class _QuizCardState extends State<QuizCard> {
                       ),
 
                       Expanded(
-                        child: Text(widget.dueDate,style: TextStyle(
+                        child: Text(DateTime.parse(widget.dueDate).toLocal().toString().split(' ')[0],style: TextStyle(
                           color: Colors.green,
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
@@ -90,7 +92,8 @@ class _QuizCardState extends State<QuizCard> {
                           fontSize: 15.0,
                           fontWeight: FontWeight.bold,
 
-                        ),),
+                        ),
+                        ),
                       ),
 
                     ],
@@ -104,24 +107,35 @@ class _QuizCardState extends State<QuizCard> {
         ),
       ),
       onTap: (){
-        Provider.of<QuizModel>(context,listen: false).addQuizDetails(widget.quizTitle, widget.dueTime, widget.dueDate, widget.imgUrl);
-        if(widget.filestatus=='mcqs' && widget.participantStatus=='Student')
-        {
-          Navigator.push(context, FadeRoute(page: AttemptMCQS(docId: widget.docId,)));
-        }
-        else if(widget.filestatus=='mcqs'&&widget.participantStatus=='Teacher')
-        {
-          Navigator.push(context, FadeRoute(page: CreateMcqs()));
-        }
-        else if(widget.filestatus=='file'&& widget.participantStatus=='Student')
-        {
-          Navigator.push(context, FadeRoute(page: UploadQuiz(widget.docId)));
-        }
-        else if(widget.filestatus=='file'&& widget.participantStatus=='Teacher'){
-          Navigator.push(context, FadeRoute(page: TeacherUploadQuiz()));
+        if(!widget.lock) {
+          Provider.of<QuizModel>(context, listen: false).addQuizDetails(
+              widget.quizTitle, widget.dueTime, widget.dueDate, widget.imgUrl);
+          if (widget.filestatus == 'mcqs' &&
+              widget.participantStatus == 'Student') {
+            Navigator.push(
+                context, FadeRoute(page: AttemptMCQS(docId: widget.docId,)));
+          }
+          else if (widget.filestatus == 'mcqs' &&
+              widget.participantStatus == 'Teacher') {
+            Navigator.push(context, FadeRoute(page: CreateMcqs()));
+          }
+          else if (widget.filestatus == 'file' &&
+              widget.participantStatus == 'Student') {
+            Navigator.push(context, FadeRoute(page: UploadQuiz(widget.docId)));
+          }
+          else if (widget.filestatus == 'file' &&
+              widget.participantStatus == 'Teacher') {
+            Navigator.push(context, FadeRoute(page: TeacherUploadQuiz()));
+          }
+          else {
+            Navigator.push(context, FadeRoute(page: Participants()));
+          }
         }
         else{
-          Navigator.push(context, FadeRoute(page: Participants()));
+          AlertBoxes _alert=AlertBoxes();
+          _alert.simpleAlertBox(context, Text('Quiz Locked'), Text('Either you have attempted this quiz or due time is over.'), (){
+            Navigator.pop(context);
+          });
         }
       },
     );

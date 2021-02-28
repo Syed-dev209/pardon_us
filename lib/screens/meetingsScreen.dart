@@ -7,6 +7,8 @@ import 'package:pardon_us/screens/CallPage2.dart';
 import 'package:pardon_us/screens/callPage.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:provider/provider.dart';
+import '../utils/settings.dart';
+import '../utils/settings.dart';
 
 class MeetingScreen extends StatefulWidget {
   @override
@@ -15,6 +17,7 @@ class MeetingScreen extends StatefulWidget {
 
 class _MeetingScreenState extends State<MeetingScreen> {
   final _channelController = TextEditingController();
+  final _passwordController = TextEditingController();
   bool _validateError = false;
   ClientRole _role;
 
@@ -41,11 +44,22 @@ class _MeetingScreenState extends State<MeetingScreen> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
             ),
+            TextFormField(
+              controller: _passwordController,
+              decoration: InputDecoration(
+                  labelText: 'Meeting Password',
+                  border: OutlineInputBorder(),
+                  hintText: 'Enter meeting password here...',
+                  contentPadding:
+                  EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
+            ),
             SizedBox(
               height: 10.0,
             ),
             RaisedButton(
-              child: Text('Start Meeting'),
+              child: Provider.of<UserDetails>(context, listen: false)
+                  .UserParticipantStatus ==
+                  "Teacher"?Text('Start Meeting'):Text('Join Meeting'),
               color: Colors.blue,
               textColor: Colors.white,
               shape: RoundedRectangleBorder(
@@ -80,6 +94,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
   }
 
   Future<void> onJoin() async {
+    Token=_passwordController.text;
     if (_channelController.text.isNotEmpty) {
       // Wait for the permission for camera and microphone
       await _handleCameraAndMic(Permission.camera);
@@ -93,33 +108,33 @@ class _MeetingScreenState extends State<MeetingScreen> {
       } else {
         _role = ClientRole.Audience;
       }
-      // await Navigator.push(
-      //   context,
-      //   MaterialPageRoute(
-      //     builder: (context) => CallPage(
-      //       channelName: _channelController.text,
-      //       role: _role,
-      //     ),
-      //   ),
-      // );
       await Navigator.push(
         context,
         MaterialPageRoute(
-          builder: (context) => CallPageSecond(
-            appId: 'f235a1310fcc4347af2e567d3a742a3c',
-            channel: _channelController.text,
-            video: true,
-            audio: true,
-            screen: true,
-            profile: '480p',
-            width: '1000',
-            height: '1000',
-            framerate: ' ',
-            codec: 'h264',
-            mode: 'live',
+          builder: (context) => CallPage(
+            channelName: _channelController.text,
+            role: ClientRole.Broadcaster,
           ),
         ),
       );
+      // await Navigator.push(
+      //   context,
+      //   MaterialPageRoute(
+      //     builder: (context) => CallPageSecond(
+      //       appId: 'f235a1310fcc4347af2e567d3a742a3c',
+      //       channel: _channelController.text,
+      //       video: true,
+      //       audio: true,
+      //       screen: true,
+      //       profile: '480p',
+      //       width: '1000',
+      //       height: '1000',
+      //       framerate: ' ',
+      //       codec: 'h264',
+      //       mode: 'live',
+      //     ),
+      //   ),
+      // );
     }
   }
 

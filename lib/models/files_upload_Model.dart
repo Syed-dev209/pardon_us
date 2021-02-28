@@ -28,7 +28,36 @@ class FilesUpload{
     });
     return true;
   }
+Future<bool> submitStudentAssignment({String name,PlatformFile assFile,String classCode,String assDocId})async
+{
+  try {
+    String fileUrl = await uploadFile(assFile, classCode, 'assignmentFiles');
+    await firestore.collection('assignments').doc(classCode).collection(
+        'assignment').doc(assDocId).collection('attemptedBy').doc().set({
+      'name': name,
+      'dateTime': DateTime.now().toString(),
+      'fileUrl': fileUrl,
+      'marksObtained': '0'
+    });
+    return true;
+  }
+  catch(e){
+    return false;
+  }
 
+}
+
+Future<bool> gradeStudentAssignment({String classCode,String marks,String assDocId,String stdDocId})async{
+   try{
+     await firestore.collection('assignments').doc(classCode).collection('assignment').doc(assDocId).collection('attemptedBy').doc(stdDocId).update({
+       'marksObtained':marks
+     });
+     return true;
+   }
+   catch(e){
+     return false;
+   }
+}
 
   Future<String> uploadFile(PlatformFile _file,String classCode,String ref) async {
   // File ccc= _file as File;

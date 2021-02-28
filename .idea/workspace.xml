@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/login_methods.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/login_methods.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/models/messagesMethods.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/messagesMethods.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +79,30 @@
       <option name="presentableId" value="Default" />
       <updated>1605627972830</updated>
     </task>
+    <task id="LOCAL-00001" summary="New call page added">
+      <created>1614461955506</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1614461955507</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="New call page added" />
+    <option name="LAST_COMMIT_MESSAGE" value="New call page added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1165" y="563" key="#Notifications" timestamp="1612776457271">
@@ -86,26 +118,26 @@
     </state>
     <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1606911144708" />
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1614459585619" />
-    <state width="2500" height="559" key="GridCell.Tab.0.bottom" timestamp="1612792197117">
+    <state width="2517" height="344" key="GridCell.Tab.0.bottom" timestamp="1614462084467">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2500" height="559" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
-    <state width="2500" height="559" key="GridCell.Tab.0.center" timestamp="1612792197117">
+    <state width="2517" height="344" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1614462084467" />
+    <state width="2517" height="344" key="GridCell.Tab.0.center" timestamp="1614462084467">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2500" height="559" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
-    <state width="2500" height="559" key="GridCell.Tab.0.left" timestamp="1612792197117">
+    <state width="2517" height="344" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1614462084467" />
+    <state width="2517" height="344" key="GridCell.Tab.0.left" timestamp="1614462084466">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2500" height="559" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
-    <state width="2500" height="559" key="GridCell.Tab.0.right" timestamp="1612792197117">
+    <state width="2517" height="344" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1614462084466" />
+    <state width="2517" height="344" key="GridCell.Tab.0.right" timestamp="1614462084467">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="319" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1606821407962" />
-    <state width="2500" height="559" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1612792197117" />
+    <state width="2517" height="344" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1614462084467" />
     <state x="781" y="342" key="SettingsEditor" timestamp="1611049084919">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

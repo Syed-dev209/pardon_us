@@ -19,7 +19,8 @@ class AttemptMCQS extends StatefulWidget {
 }
 
 class _AttemptMCQSState extends State<AttemptMCQS> {
-  int _currentstep = 0, index = 0, result = 0;
+  int _currentstep = 0, index = 0;
+  double result=0.0;
   bool complete = false;
   FirebaseFirestore _firestore;
   List<Step> stepsCont = [];
@@ -144,6 +145,7 @@ class _AttemptMCQSState extends State<AttemptMCQS> {
                             i));
                         Provider.of<QuizModel>(context, listen: false)
                             .setCorrAns(qq.data()['corrAns']);
+                        Provider.of<QuizModel>(context,listen: false).setPoints(qq.data()['points']);
                       }
                       print(stepsCont.length);
                       return Expanded(child: Consumer<QuizModel>(

@@ -32,12 +32,18 @@ class _StudentUploadAssignmentState extends State<StudentUploadAssignment> {
       showSpinner = false;
   DateTime dateTime = DateTime.now();
   FilesUpload upload;
-
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    print(widget.assDetails.docId);
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('PARDON US'),
+        centerTitle: true,
       ),
       body: ModalProgressHUD(
         inAsyncCall: showSpinner,
@@ -86,92 +92,107 @@ class _StudentUploadAssignmentState extends State<StudentUploadAssignment> {
                     height: 20.0, child: Divider(color: Colors.blueGrey,),),
                   Padding(
                     padding: EdgeInsets.all(8.0),
-                    child: Container(
-                      height: 400.0,
-                      decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(7.0),
-                          border: Border.all(
-                              color: Colors.black26,
-                              width: 1.0
-                          )
-                      ),
-                      child: Column(
-                        children: [
-                          Container(
-                              height: 220.0,
-                              // width: 400.0,
-                              child: fileSelected
-                                  ? ListView(
-                                children: [
-                                  ListTile(
-                                    leading: isPdf
-                                        ? Image.asset(
-                                      'images/pdf_img.png',
-                                      height: 50.0,
-                                      width: 50.0,
-                                    )
-                                        : Image.asset(
-                                      'images/doc_img.png',
-                                      height: 50.0,
-                                      width: 50.0,
-                                    ),
-                                    title: Column(
-                                      crossAxisAlignment:
-                                      CrossAxisAlignment.start,
-                                      children: [
-                                        Text('File selected: ${_file.name}'),
-                                      ],
-                                    ),
-                                    subtitle: Row(
-                                      children: [
-                                        Text(
-                                          'Time: ',
-                                          style: TextStyle(color: Colors.red),
-                                        ),
-                                        Text(
-                                          '${dateTime.hour}:${dateTime.minute}',
-                                          style:
-                                          TextStyle(color: Colors.green),
-                                        ),
-                                        SizedBox(
-                                          width: 5.0,
-                                        ),
-                                        Text('Date: ',
-                                            style:
-                                            TextStyle(color: Colors.red)),
-                                        Text(
-                                          '${dateTime.day}/${dateTime
-                                              .month}/${dateTime.year}',
-                                          style:
-                                          TextStyle(color: Colors.green),
-                                        ),
-                                      ],
-                                    ),
+                    child: GestureDetector(
+                      onTap: ()async{
+                        _dir = Directory();
+                              _file = await _dir.pickFiles();
+                              setState(() {
+                                fileSelected = true;
+                                if (_file.extension == 'pdf') {
+                                  isPdf = true;
+                                }
+                              });
+                      },
+                      child: Container(
+                        height: fileSelected?150.0: 400.0,
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(7.0),
+                            border: Border.all(
+                                color: Colors.black26,
+                                width: 1.0
+                            )
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            fileSelected
+                                ? ListTile(
+                                  leading: isPdf
+                                      ? Image.asset(
+                                    'images/pdf_img.png',
+                                    height: 50.0,
+                                    width: 50.0,
                                   )
-                                ],
-                              )
-                                  : Container()),
-                          Align(
-                            alignment: FractionalOffset.bottomCenter,
-                            child: IconButton(
-                              onPressed: () async {
-                                _dir = Directory();
-                                _file = await _dir.pickFiles();
-                                setState(() {
-                                  fileSelected = true;
-                                  if (_file.extension == 'pdf') {
-                                    isPdf = true;
-                                  }
-                                });
-                              },
-                              icon: Icon(
-                                Icons.file_upload, color: Colors.indigo,
-                                size: 40.0,),
-                            ),
-                          ),
-                        ],
-                      ),
+                                      : Image.asset(
+                                    'images/doc_img.png',
+                                    height: 50.0,
+                                    width: 50.0,
+                                  ),
+                                  title: Column(
+                                    crossAxisAlignment:
+                                    CrossAxisAlignment.start,
+                                    children: [
+                                      Text('File selected: ${_file.name}'),
+                                    ],
+                                  ),
+                                  subtitle: Row(
+                                    children: [
+                                      Text(
+                                        'Time: ',
+                                        style: TextStyle(color: Colors.red),
+                                      ),
+                                      Text(
+                                        '${dateTime.hour}:${dateTime.minute}',
+                                        style:
+                                        TextStyle(color: Colors.green),
+                                      ),
+                                      SizedBox(
+                                        width: 5.0,
+                                      ),
+                                      Text('Date: ',
+                                          style:
+                                          TextStyle(color: Colors.red)),
+                                      Text(
+                                        '${dateTime.day}/${dateTime
+                                            .month}/${dateTime.year}',
+                                        style:
+                                        TextStyle(color: Colors.green),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                                : Column(
+                                  mainAxisAlignment:MainAxisAlignment.center ,
+                                  children: [
+                                    Icon(Icons.file_copy_outlined,size: 30.0,color: Colors.black26,),
+                                    Text('Upload Quiz File',style: TextStyle(
+                                      color: Colors.black26,
+                                      fontSize: 24.0
+                                    ),),
+                                  ],
+                                ),
+                            // Align(
+                            //   alignment: FractionalOffset.bottomCenter,
+                            //   child: IconButton(
+                            //     onPressed: () async {
+                            //       _dir = Directory();
+                            //       _file = await _dir.pickFiles();
+                            //       setState(() {
+                            //         fileSelected = true;
+                            //         if (_file.extension == 'pdf') {
+                            //           isPdf = true;
+                            //         }
+                            //       });
+                            //     },
+                            //     icon: Icon(
+                            //       Icons.file_upload, color: Colors.indigo,
+                            //       size: 40.0,),
+                            //   ),
+                            // ),
+                          ],
+                        ),
 
+                      ),
                     ),
                   ),
                   SizedBox(height: 10.0),
@@ -182,16 +203,17 @@ class _StudentUploadAssignmentState extends State<StudentUploadAssignment> {
                       shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(7.0)
                       ),
-                      color: Colors.blueAccent,
+                      color: Colors.indigo,
                       child: Text('Submit',
                         style: TextStyle(fontSize: 20.0, color: Colors.white),),
                       onPressed: () async {
+                        AlertBoxes _alert=AlertBoxes();
                         if (fileSelected) {
                           setState(() {
                             showSpinner = true;
                           });
                           upload = FilesUpload();
-                          AlertBoxes _alert=AlertBoxes();
+
                           bool check = await upload.submitStudentAssignment(
                               name: Provider
                                   .of<UserDetails>(context, listen: false)
@@ -216,7 +238,11 @@ class _StudentUploadAssignmentState extends State<StudentUploadAssignment> {
                               Navigator.pop(context);
                             });
                           }
-                          
+                        }
+                        else{
+                          _alert.simpleAlertBox(context, Text('File missing'),Text('You must select a file to continue.') , (){
+                            Navigator.pop(context);
+                          });
                         }
                         //Navigator.push(context, FadeRoute(page: ClassScreen()));
                       },

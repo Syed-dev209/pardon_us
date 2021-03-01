@@ -42,10 +42,12 @@ class _GradeStudentQuizState extends State<GradeStudentQuiz> {
         child: SafeArea(
           child: SingleChildScrollView(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 10.0),
+              padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 20.0),
               child: Form(
                 key: _key,
                 child: Column(
+
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text('Student Name',style: TextStyle(
                       fontSize: 16.0,
@@ -56,7 +58,7 @@ class _GradeStudentQuizState extends State<GradeStudentQuiz> {
                       fontSize: 22.0,
                       fontWeight: FontWeight.bold
                     ),),
-                    SizedBox(height: 10.0,),
+                    SizedBox(height: 30.0,),
                     Text('Submitted at',style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black26
@@ -67,7 +69,7 @@ class _GradeStudentQuizState extends State<GradeStudentQuiz> {
                         fontWeight: FontWeight.bold
                     ),
                     ),
-                    SizedBox(height: 10.0,),
+                    SizedBox(height: 30.0,),
                     Text('Submitted File',style: TextStyle(
                         fontSize: 16.0,
                         color: Colors.black26
@@ -84,6 +86,7 @@ class _GradeStudentQuizState extends State<GradeStudentQuiz> {
                       title: Text('File Name'),
                       subtitle: Text('Click to download file'),
                     ),
+                    SizedBox(height: 30.0,),
                     TextFormField(
                       controller: marks,
                       validator: MultiValidator([
@@ -91,61 +94,63 @@ class _GradeStudentQuizState extends State<GradeStudentQuiz> {
                       ]),
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
-                          labelText: 'Correct Answer',
+                          labelText: 'Enter Marks',
                           border: OutlineInputBorder(),
-                          hintText: 'Enter Correct answer here',
+                          hintText: 'Enter marks here',
                           contentPadding: EdgeInsets.symmetric(horizontal: 5.0, vertical:2.0)
                       ),
                     ),
 
                     SizedBox(height: 50.0,),
-                    RaisedButton(
-                      color: Colors.indigo,
-                      padding: EdgeInsets.symmetric(horizontal: 10.0,vertical: 5.0),
-                      child: Text('Grade',style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 18.0
-                      ),),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10.0)
-                      ),
-                      onPressed: ()async{
-                        AlertBoxes _alert=AlertBoxes();
-                        if(_key.currentState.validate())
-                          {
-                            try {
-                              setState(() {
-                                showSpinner = true;
-                              });
-                              bool check = await Provider.of<QuizModel>(
-                                  context, listen: false).gradeStudentFileQuiz(
-                                  context, widget.docId, marks.text,
-                                  widget.quizDocId);
-                              if(check)
-                                {
-                                  setState(() {
-                                    showSpinner=false;
-                                  });
-                                  _alert.simpleAlertBox(context, Text('Wooho!'), Text('Student has been graded'),(){
-                                    Navigator.push(context, FadeRoute(page: StudentQuizList(quizDocId: widget.quizDocId,)));
+                    Center(
+                      child: RaisedButton(
+                        color: Colors.indigo,
+                        padding: EdgeInsets.symmetric(horizontal: 30.0,vertical: 7.0),
+                        child: Text('Grade',style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 18.0
+                        ),),
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)
+                        ),
+                        onPressed: ()async{
+                          AlertBoxes _alert=AlertBoxes();
+                          if(_key.currentState.validate())
+                            {
+                              try {
+                                setState(() {
+                                  showSpinner = true;
+                                });
+                                bool check = await Provider.of<QuizModel>(
+                                    context, listen: false).gradeStudentFileQuiz(
+                                    context, widget.docId, marks.text,
+                                    widget.quizDocId);
+                                if(check)
+                                  {
+                                    setState(() {
+                                      showSpinner=false;
+                                    });
+                                    _alert.simpleAlertBox(context, Text('Wooho!'), Text('Student has been graded'),(){
+                                      Navigator.push(context, FadeRoute(page: StudentQuizList(quizDocId: widget.quizDocId,)));
+                                    });
+                                  }
+                                else{
+                                  _alert.simpleAlertBox(context, Text('ERROR'), Text('Unable to grade student'),(){
+                                    Navigator.pop(context);
                                   });
                                 }
-                              else{
+                              }
+                              catch(e){
+                                setState(() {
+                                  showSpinner=false;
+                                });
                                 _alert.simpleAlertBox(context, Text('ERROR'), Text('Unable to grade student'),(){
                                   Navigator.pop(context);
                                 });
                               }
-                            }
-                            catch(e){
-                              setState(() {
-                                showSpinner=false;
-                              });
-                              _alert.simpleAlertBox(context, Text('ERROR'), Text('Unable to grade student'),(){
-                                Navigator.pop(context);
-                              });
-                            }
-                            }
-                      },
+                              }
+                        },
+                      ),
                     )
                   ],
                 ),

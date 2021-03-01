@@ -9,6 +9,7 @@ class QuizModel extends ChangeNotifier{
   Map<String,String> quizDeatils;
   List<String> questions=[];
   List<String> corrAns=[];
+  List<String> points=[];
   List<String> opt1=[];
   List<String> opt2=[];
   List<String> opt3=[];
@@ -16,9 +17,16 @@ class QuizModel extends ChangeNotifier{
   List<String> selectedAns=[];
   String classCode;
   int stepCount;
+  bool _loaded=false;
   Map<int,String> sAns={
     0:''
   };
+
+  setLoader(bool loader){
+    _loaded=loader;
+    notifyListeners();
+  }
+  get getLoader{return _loaded;}
 
   addQuizDetails(String QuizTitle,String time,String date,String ImageUrl){
     quizDeatils={
@@ -118,7 +126,7 @@ class QuizModel extends ChangeNotifier{
 
   }
 
-  Future<bool> submitStudentMcqResult(context,int marksObtained,String docId)async{
+  Future<bool> submitStudentMcqResult(context,double marksObtained,String docId)async{
    DocumentReference docRef= firestore.collection('quizes').doc(Provider.of<UserDetails>(context,listen: false).currentClassCode).collection('quiz').doc(docId).collection('attemptedBy').doc();
    docRef.set(
      {
@@ -175,6 +183,10 @@ class QuizModel extends ChangeNotifier{
     corrAns.add(ans);
     notifyListeners();
   }
+  setPoints(String point){
+    points.add(point);
+    //notifyListeners();
+  }
   setSelAns(String ans,int i){
     print(ans);
     try{
@@ -188,10 +200,11 @@ class QuizModel extends ChangeNotifier{
     notifyListeners();
   }
 
-  int checkAnswers(){
-    int result=0;
+  double checkAnswers(){
+    double result=0;
     final ans=corrAns.asMap();
     final check=selectedAns.asMap();
+    final pts = points.asMap();
     print(corrAns);
     print(sAns);
     print('=============');
@@ -199,7 +212,8 @@ class QuizModel extends ChangeNotifier{
     print(check);
     for(int i=0;i<corrAns.length;i++){
       if(ans[i]==sAns[i]){
-        result++;
+        double obtPoints=double.parse(pts[i]);
+        result=result+obtPoints;
       }
     }
     return result;

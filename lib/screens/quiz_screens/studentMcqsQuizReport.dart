@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:pardon_us/models/create_Mcqs_Model.dart';
 import 'package:pardon_us/models/userDeatils.dart';
 import 'package:provider/provider.dart';
 
@@ -22,8 +23,10 @@ class _StudentMcqsQuizReportState extends State<StudentMcqsQuizReport> {
   String name;
   DateTime submittedTime;
   String marks;
+  bool loaded=false;
 
   void getStudentAnswers() async {
+    print('entered');
     final stdData = await _firestore
         .collection('quizes')
         .doc(Provider.of<UserDetails>(context, listen: false).currentClassCode)
@@ -37,12 +40,15 @@ class _StudentMcqsQuizReportState extends State<StudentMcqsQuizReport> {
     submittedTime = DateTime.parse(stdData.data()['dateTime']);
     for (int i = 0; i < questions.length; i++) {
       stdAns.add(stdData.data()['ans$i']);
+      buildQuesAnsResultTile(questions[i], corrAns[i],stdAns[i],i);
     }
+   Provider.of<QuizModel>(context,listen: false).setLoader(true);
   }
-
-  buildQuesAnsResultTile(String ques, String corAns, String ans) {
+  buildQuesAnsResultTile(String ques, String corAns, String ans,int index) {
     tiles.add(ListTile(
-      title: Text(ques),
+      title: Text('$index. $ques',style: TextStyle(
+        fontSize: 16.0,fontWeight: FontWeight.bold
+      ),),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -96,69 +102,80 @@ class _StudentMcqsQuizReportState extends State<StudentMcqsQuizReport> {
                   corrAns.add(ques.data()['corrAns']);
                   numOfQuestions = numOfQuestions + 1;
                 }
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Student Name',
-                      style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                    ),
-                    SizedBox(
-                      height: 4.0,
-                    ),
-                    Text(
-                      name,
-                      style: TextStyle(
-                          fontSize: 22.0, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Submitted at',
-                      style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                    ),
-                    SizedBox(
-                      height: 4.0,
-                    ),
-                    Text(
-                      '${submittedTime.toLocal().toString().split(' ')[0]}, ${submittedTime.hour}:${submittedTime.minute}',
-                      style: TextStyle(
-                          fontSize: 22.0, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Column(
-                      children: tiles,
-                    ),
-                    SizedBox(
-                      height: 10.0,
-                    ),
-                    Text(
-                      'Marks Obtained by Student',
-                      style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                    ),
-                    SizedBox(
-                      height: 4.0,
-                    ),
-                    Text(
-                      marks,
-                      style: TextStyle(
-                          fontSize: 22.0, fontWeight: FontWeight.bold),
-                    ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
-                    Text(
-                      'Attention: Marks have been calculated by system itself.',
-                      style: TextStyle(fontSize: 16.0, color: Colors.red),
-                    ),
-                  ],
+                getStudentAnswers();
+                return Consumer<QuizModel>(builder: (context,child,data){
+                  return child.getLoader?Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Student Name',
+                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      Text(
+                        name,
+                        style: TextStyle(
+                            fontSize: 22.0, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      Text(
+                        'Submitted at',
+                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      Text(
+                        '${submittedTime.toLocal().toString().split(' ')[0]}, ${submittedTime.hour}:${submittedTime.minute}',
+                        style: TextStyle(
+                            fontSize: 22.0, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 10.0,
+                      ),  Text(
+                        'Mcq\'s question and answers',
+                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: tiles,
+                      ),
+                      SizedBox(
+                        height: 30.0,
+                      ),
+                      Text(
+                        'Marks Obtained by Student',
+                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
+                      ),
+                      SizedBox(
+                        height: 4.0,
+                      ),
+                      Text(
+                        marks,
+                        style: TextStyle(
+                            fontSize: 22.0, fontWeight: FontWeight.bold),
+                      ),
+                      SizedBox(
+                        height: 20.0,
+                      ),
+                      Text(
+                        'Attention: Marks have been calculated by system itself.',
+                        style: TextStyle(fontSize: 16.0, color: Colors.red),
+                      ),
+                    ],
+                  ):Center(child: CircularProgressIndicator(backgroundColor: Colors.indigo,));
+                }
                 );
               },
             ),
-          ),
+          )
         ),
       ),
     );

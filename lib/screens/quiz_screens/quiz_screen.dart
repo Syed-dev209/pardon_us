@@ -26,6 +26,7 @@ class _QuizScreenState extends State<QuizScreen> {
   Widget buildStudentTile(String quizTitle, String duedate, String dueTime,
       String type, String docId, String imgUrl) {
     lockQuiz(docId, duedate);
+    print('printing attempt $attempt');
     return ListTile(
       title: QuizCard(quizTitle, duedate, dueTime, type,
           widget.participantStatus, docId, imgUrl, attempt),
@@ -43,6 +44,7 @@ class _QuizScreenState extends State<QuizScreen> {
   void initState() {
     // TODO: implement initState
     super.initState();
+    quizcards.clear();
     _firestore = FirebaseFirestore.instance;
   }
 
@@ -171,6 +173,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
   void lockQuiz(String quizDocID, String dueDate) async {
     bool check = await checkAttempt(quizDocID, dueDate);
+    print(check);
     attempt = check;
   }
 
@@ -197,10 +200,8 @@ class _QuizScreenState extends State<QuizScreen> {
           id = data.id;
         }
         if (id != null) {
-          print('exist');
           return true;
         } else {
-          print('not exist');
           return false;
         }
       }

@@ -52,19 +52,31 @@ class _DrawerItemState extends State<DrawerItem> {
           // ),
           ListTile(
             leading: Icon(Icons.forward),
-            title: Text('ABOUT'),
+            title: Text('ABOUT',style: TextStyle(
+              fontSize: 20.0,
+              color: Colors.black45
+            ),),
           ),
           ListTile(
             leading: Icon(Icons.settings),
-            title: Text('SETTINGS'),
+            title: Text('SETTINGS',style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.black45
+            ),),
           ),
           ListTile(
             leading: Icon(Icons.question_answer),
-            title: Text('TERMS AND CONDITIONS'),
+            title: Text('TERMS AND CONDITIONS',style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.black45
+            ),),
           ),
           ListTile(
             leading: Icon(Icons.power_settings_new),
-            title: Text('LOGOUT'),
+            title: Text('LOGOUT',style: TextStyle(
+                fontSize: 20.0,
+                color: Colors.black45
+            ),),
             onTap: ()async{
              widget.isLoggedIn= await widget._login.googleSignOut();
              setState(() {

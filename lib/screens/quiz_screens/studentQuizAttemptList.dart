@@ -66,7 +66,9 @@ class _StudentQuizListState extends State<StudentQuizList> {
                       widget.quizDocId));
                 }
               }
-              return Column();
+              return Column(
+                children: students,
+              );
             },
           ),
         ),

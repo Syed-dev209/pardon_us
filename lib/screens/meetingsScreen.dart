@@ -44,6 +44,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
                   contentPadding:
                       EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
             ),
+            SizedBox(height: 4.0,),
             TextFormField(
               controller: _passwordController,
               decoration: InputDecoration(

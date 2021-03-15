@@ -2,8 +2,7 @@
 // Generated file. Do not edit.
 //
 
-// ignore: unused_import
-import 'dart:ui';
+// ignore_for_file: lines_longer_than_80_chars
 
 import 'package:agora_rtc_engine/agora_rtc_engine_web.dart';
 import 'package:cloud_firestore_web/cloud_firestore_web.dart';
@@ -18,15 +17,15 @@ import 'package:video_player_web/video_player_web.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 // ignore: public_member_api_docs
-void registerPlugins(PluginRegistry registry) {
-  AgoraRtcEngineWeb.registerWith(registry.registrarFor(AgoraRtcEngineWeb));
-  FirebaseFirestoreWeb.registerWith(registry.registrarFor(FirebaseFirestoreWeb));
-  ConnectivityPlugin.registerWith(registry.registrarFor(ConnectivityPlugin));
-  FilePickerWeb.registerWith(registry.registrarFor(FilePickerWeb));
-  FirebaseAuthWeb.registerWith(registry.registrarFor(FirebaseAuthWeb));
-  FirebaseCoreWeb.registerWith(registry.registrarFor(FirebaseCoreWeb));
-  GoogleSignInPlugin.registerWith(registry.registrarFor(GoogleSignInPlugin));
-  UrlLauncherPlugin.registerWith(registry.registrarFor(UrlLauncherPlugin));
-  VideoPlayerPlugin.registerWith(registry.registrarFor(VideoPlayerPlugin));
-  registry.registerMessageHandler();
+void registerPlugins(Registrar registrar) {
+  AgoraRtcEngineWeb.registerWith(registrar);
+  FirebaseFirestoreWeb.registerWith(registrar);
+  ConnectivityPlugin.registerWith(registrar);
+  FilePickerWeb.registerWith(registrar);
+  FirebaseAuthWeb.registerWith(registrar);
+  FirebaseCoreWeb.registerWith(registrar);
+  GoogleSignInPlugin.registerWith(registrar);
+  UrlLauncherPlugin.registerWith(registrar);
+  VideoPlayerPlugin.registerWith(registrar);
+  registrar.registerMessageHandler();
 }

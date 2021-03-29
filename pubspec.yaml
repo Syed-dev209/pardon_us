@@ -34,7 +34,8 @@ dependencies:
   cloud_firestore: ^0.14.3
   agora_rtc_engine: ^3.2.1
   image_picker:
-  agora_flutter_webrtc:
+  jitsi_meet:
+  shared_preferences:
 
 
 dev_dependencies:

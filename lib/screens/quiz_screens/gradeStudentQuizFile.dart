@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:pardon_us/animation_transition/fade_transition.dart';
@@ -92,7 +93,10 @@ class _GradeStudentQuizState extends State<GradeStudentQuiz> {
                       validator: MultiValidator([
                         RequiredValidator(errorText: '*You can not leave this blank'),
                       ]),
-                      keyboardType: TextInputType.text,
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.allow(RegExp(r'^(\d+)?\.?\d{0,2}')),
+                      ],
                       decoration: InputDecoration(
                           labelText: 'Enter Marks',
                           border: OutlineInputBorder(),

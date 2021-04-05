@@ -22,23 +22,33 @@
     <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="New call page added">
       <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/bg_img.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ilhn.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/ilhn1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo(1).png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/pardon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/assignmnet_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/assignmnet_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/components/quiz_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/quiz_card.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/CallPage2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/CallPage2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/meetingsScreen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/models/create_Mcqs_Model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/models/create_Mcqs_Model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/assignments_screens/gradeStudentAssignment.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/assignments_screens/gradeStudentAssignment.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/quiz_screens/gradeStudentQuizFile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/quiz_screens/gradeStudentQuizFile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/screens/quiz_screens/mcqs_create_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/quiz_screens/mcqs_create_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pardon_us.iml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5HR6R19304004752]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[3200ba595e8ab547]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -62,7 +72,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../pardon us web project/pardon_us_web" />
     <property name="settings.editor.selected.configurable" value="flutter.settings" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
@@ -133,30 +143,30 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1614589004656" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1615893472335">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="566" y="210" key="FileChooserDialogImpl" timestamp="1617623172284">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1614513699893" />
+    <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617623172284" />
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1615893472335" />
-    <state width="2517" height="98" key="GridCell.Tab.0.bottom" timestamp="1616935176650">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1323" height="302" key="GridCell.Tab.0.bottom" timestamp="1617623133943">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="342" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1614614413470" />
+    <state width="1323" height="302" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1617623133943" />
     <state width="2517" height="98" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1616935176650" />
-    <state width="2517" height="98" key="GridCell.Tab.0.center" timestamp="1616935176650">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1323" height="302" key="GridCell.Tab.0.center" timestamp="1617623133943">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="342" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1614614413469" />
+    <state width="1323" height="302" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1617623133943" />
     <state width="2517" height="98" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1616935176650" />
-    <state width="2517" height="98" key="GridCell.Tab.0.left" timestamp="1616935176650">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1323" height="302" key="GridCell.Tab.0.left" timestamp="1617623133943">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="342" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1614614413469" />
+    <state width="1323" height="302" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1617623133943" />
     <state width="2517" height="98" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1616935176650" />
-    <state width="2517" height="98" key="GridCell.Tab.0.right" timestamp="1616935176650">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1323" height="302" key="GridCell.Tab.0.right" timestamp="1617623133943">
+      <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state width="1323" height="342" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1614614413469" />
+    <state width="1323" height="302" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1617623133943" />
     <state width="2517" height="98" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1616935176650" />
     <state x="7" y="17" key="SettingsEditor" timestamp="1614513094998">
       <screen x="0" y="0" width="1366" height="728" />

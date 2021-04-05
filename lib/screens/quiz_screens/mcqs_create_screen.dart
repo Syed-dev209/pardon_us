@@ -225,7 +225,7 @@ class _CreateMcqsState extends State<CreateMcqs> {
                                 .addQuizDetails(
                                     title.text,
                                     '$_time',
-                                    _date.millisecondsSinceEpoch.toString(),
+                                    _date.toString(),
                                     image.text.isEmpty
                                         ? 'https://cdn.pixabay.com/photo/2017/03/25/20/51/quiz-2174368_960_720.png'
                                         : image.text);

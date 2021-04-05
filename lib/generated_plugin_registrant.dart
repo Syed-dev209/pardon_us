@@ -4,7 +4,6 @@
 
 // ignore_for_file: lines_longer_than_80_chars
 
-import 'package:agora_rtc_engine/agora_rtc_engine_web.dart';
 import 'package:cloud_firestore_web/cloud_firestore_web.dart';
 import 'package:connectivity_for_web/connectivity_for_web.dart';
 import 'package:file_picker/src/file_picker_web.dart';
@@ -19,7 +18,6 @@ import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
 // ignore: public_member_api_docs
 void registerPlugins(Registrar registrar) {
-  AgoraRtcEngineWeb.registerWith(registrar);
   FirebaseFirestoreWeb.registerWith(registrar);
   ConnectivityPlugin.registerWith(registrar);
   FilePickerWeb.registerWith(registrar);

@@ -133,7 +133,7 @@ class QuizModel extends ChangeNotifier{
        'type':'mcqs',
        'name':Provider.of<UserDetails>(context,listen: false).username,
        'dateTime':DateTime.now().toString(),
-       'marksObtained':marksObtained,
+       'marksObtained':marksObtained.toString(),
      }
    );
    sAns.forEach((key, value) {

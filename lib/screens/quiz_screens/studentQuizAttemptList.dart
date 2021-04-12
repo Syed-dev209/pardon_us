@@ -14,101 +14,154 @@ class StudentQuizList extends StatefulWidget {
 }
 
 class _StudentQuizListState extends State<StudentQuizList> {
-  FirebaseFirestore _firestore= FirebaseFirestore.instance;
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.indigo,
-        title: Text('Students List',style: TextStyle(
-          color: Colors.white,
-          fontSize: 20.0
-        ),),
-      iconTheme: IconThemeData(
-        color: Colors.white
+        title: Text(
+          'Students List',
+          style: TextStyle(color: Colors.white, fontSize: 20.0),
+        ),
+        iconTheme: IconThemeData(color: Colors.white),
       ),
-      ),
-    body: SafeArea(
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 12.0,vertical: 10.0),
-          child: StreamBuilder(
-            stream: _firestore.collection('quizes').doc(Provider.of<UserDetails>(context,listen: false).currentClassCode).collection('quiz').doc(widget.quizDocId).collection('attemptedBy').snapshots(),
-            builder: (context,snapshot)
-            {
-              if(!snapshot.hasData){
-                return Center(
-                  child: Text('No students has attempted quiz yet.'),
-                );
-              }
-              if(snapshot.hasError)
-                {
+      body: SafeArea(
+        child: SingleChildScrollView(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
+            child: StreamBuilder(
+              stream: _firestore
+                  .collection('quizes')
+                  .doc(Provider.of<UserDetails>(context, listen: false)
+                      .currentClassCode)
+                  .collection('quiz')
+                  .doc(widget.quizDocId)
+                  .collection('attemptedBy')
+                  .snapshots(),
+              builder: (context, snapshot) {
+                if (!snapshot.hasData) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-              if(snapshot.connectionState==ConnectionState.waiting)
-                {
+                if (snapshot.hasError) {
                   return Center(
                     child: CircularProgressIndicator(),
                   );
                 }
-              final data = snapshot.data.docs;
-              List<ListTile> students=[];
-              for(var std in data){
-                if(std.data()['type']=='mcqs')
-                  {
-                    students.add(studentMcqsTile(context, std.id,std.data()['name'], std.data()['dateTime'], std.data()['marksObtained'],widget.quizDocId));
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                final data = snapshot.data.docs;
+                List<ListTile> students = [];
+                for (var std in data) {
+                  if (std.data()['type'] == 'mcqs') {
+                    students.add(studentMcqsTile(
+                        context,
+                        std.id,
+                        std.data()['name'],
+                        std.data()['dateTime'],
+                        std.data()['marksObtained'],
+                        widget.quizDocId));
+                  } else {
+                    students.add(studentFileTile(
+                        context,
+                        std.id,
+                        std.data()['name'],
+                        std.data()['dateTime'],
+                        std.data()['fileUrl'],
+                        widget.quizDocId));
                   }
-                else {
-                  students.add(studentFileTile(context, std.id, std.data()['name'],
-                      std.data()['dateTime'], std.data()['fileUrl'],
-                      widget.quizDocId));
                 }
-              }
-              return Column(
-                children: students,
-              );
-            },
+                return Column(
+                  children: students.isNotEmpty
+                      ? students
+                      : [
+                          Container(
+                            height: MediaQuery.of(context).size.height * 0.7,
+                            width: MediaQuery.of(context).size.width,
+                            child: Center(
+                              child: Text(
+                                'No Student has completed Quiz yet',
+                                style: TextStyle(
+                                    fontSize: 30.0,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.indigo[100]),
+                                textAlign: TextAlign.center,
+                              ),
+                            ),
+                          )
+                        ],
+                );
+              },
+            ),
           ),
         ),
       ),
-    ),
     );
   }
 }
 
-Widget studentFileTile(context,String id, String name,String date,String fileUrl,String quizDocId){
+Widget studentFileTile(context, String id, String name, String date,
+    String fileUrl, String quizDocId) {
   return ListTile(
-    onTap: (){
-      Navigator.push(context,FadeRoute(page: GradeStudentQuiz(name: name,date: date,file: fileUrl,docId: id,quizDocId: quizDocId,)));
+    onTap: () {
+      Navigator.push(
+          context,
+          FadeRoute(
+              page: GradeStudentQuiz(
+            name: name,
+            date: date,
+            file: fileUrl,
+            docId: id,
+            quizDocId: quizDocId,
+          )));
     },
     leading: CircleAvatar(
       backgroundColor: Colors.indigo,
-      child: Text(name[0],style: TextStyle(
-        color: Colors.white,
-        fontSize: 20.0,
-        fontWeight: FontWeight.bold
-      ),),
+      child: Text(
+        name[0],
+        style: TextStyle(
+            color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+      ),
     ),
     title: Text(name),
-    trailing: Icon(Icons.arrow_forward_rounded,color: Colors.indigo,size: 28.0,),
+    trailing: Icon(
+      Icons.arrow_forward_rounded,
+      color: Colors.indigo,
+      size: 28.0,
+    ),
   );
 }
-Widget studentMcqsTile(context,String id, String name,String date,String marks,String quizDocId){
+
+Widget studentMcqsTile(context, String id, String name, String date,
+    String marks, String quizDocId) {
   return ListTile(
-    onTap: (){
-      Navigator.push(context,FadeRoute(page: StudentMcqsQuizReport(stdDocId: id,quizDocId: quizDocId,)));
+    onTap: () {
+      Navigator.push(
+          context,
+          FadeRoute(
+              page: StudentMcqsQuizReport(
+            stdDocId: id,
+            quizDocId: quizDocId,
+          )));
     },
     leading: CircleAvatar(
       backgroundColor: Colors.indigo,
-      child: Text(name[0],style: TextStyle(
-          color: Colors.white,
-          fontSize: 20.0,
-          fontWeight: FontWeight.bold
-      ),),
+      child: Text(
+        name[0],
+        style: TextStyle(
+            color: Colors.white, fontSize: 20.0, fontWeight: FontWeight.bold),
+      ),
     ),
     title: Text(name),
-    trailing: Icon(Icons.arrow_forward_rounded,color: Colors.indigo,size: 28.0,),
+    trailing: Icon(
+      Icons.arrow_forward_rounded,
+      color: Colors.indigo,
+      size: 28.0,
+    ),
   );
 }

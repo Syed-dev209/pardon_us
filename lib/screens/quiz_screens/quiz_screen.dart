@@ -25,21 +25,22 @@ class _QuizScreenState extends State<QuizScreen> {
 
   Widget buildStudentTile(String quizTitle, String duedate, String dueTime,
       String type, String docId, String imgUrl) {
-    lockQuiz(docId, duedate);
+    lockQuiz(docId, duedate, dueTime);
     print('printing attempt $attempt');
     return ListTile(
       title: QuizCard(quizTitle, duedate, dueTime, type,
           widget.participantStatus, docId, imgUrl, attempt),
     );
   }
+
   Widget buildTeacherTile(String quizTitle, String duedate, String dueTime,
       String type, String docId, String imgUrl) {
-    lockQuiz(docId, duedate);
     return ListTile(
       title: QuizCard(quizTitle, duedate, dueTime, type,
           widget.participantStatus, docId, imgUrl, false),
     );
   }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -58,6 +59,7 @@ class _QuizScreenState extends State<QuizScreen> {
   @override
   Widget build(BuildContext context) {
     print(widget.participantStatus);
+    quizcards.clear();
     return Stack(children: [
       Padding(
         padding: EdgeInsets.all(8.0),
@@ -85,6 +87,7 @@ class _QuizScreenState extends State<QuizScreen> {
                         );
                       }
                       final quizDetails = snapshot.data.docs;
+                      quizcards.clear();
                       for (var qd in quizDetails) {
                         quizcards.add(buildTeacherTile(
                             qd.data()['title'],
@@ -95,7 +98,25 @@ class _QuizScreenState extends State<QuizScreen> {
                             qd.data()['imageUrl']));
                       }
                       return Column(
-                        children: quizcards,
+                        children: quizcards.isNotEmpty
+                            ? quizcards
+                            : [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Center(
+                                    child: Text(
+                                      'You have\'nt created any Quiz yet.',
+                                      style: TextStyle(
+                                          fontSize: 30.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.indigo[100]),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                )
+                              ],
                       );
                     },
                   )
@@ -121,6 +142,7 @@ class _QuizScreenState extends State<QuizScreen> {
                           child: Text('Server error'),
                         );
                       }
+                      quizcards.clear();
                       final quizDetails = snapshot.data.docs;
                       for (var qd in quizDetails) {
                         quizcards.add(buildStudentTile(
@@ -133,7 +155,25 @@ class _QuizScreenState extends State<QuizScreen> {
                       }
 
                       return Column(
-                        children: quizcards,
+                        children: quizcards.isNotEmpty
+                            ? quizcards
+                            : [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.height * 0.7,
+                                  width: MediaQuery.of(context).size.width,
+                                  child: Center(
+                                    child: Text(
+                                      'Your Instructor has\'nt uploaded any Quiz yet',
+                                      style: TextStyle(
+                                          fontSize: 40.0,
+                                          fontWeight: FontWeight.bold,
+                                          color: Colors.indigo[100]),
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                )
+                              ],
                       );
                     },
                   )
@@ -171,18 +211,20 @@ class _QuizScreenState extends State<QuizScreen> {
     ]);
   }
 
-  void lockQuiz(String quizDocID, String dueDate) async {
-    bool check = await checkAttempt(quizDocID, dueDate);
-    print(check);
+  void lockQuiz(String quizDocID, String dueDate, String time) async {
+    bool check = await checkAttempt(quizDocID, dueDate, time);
+    print('checking =$check');
     attempt = check;
   }
 
-  Future<bool> checkAttempt(String quizDocID, String dueDate) async {
+  Future<bool> checkAttempt(
+      String quizDocID, String dueDate, String time) async {
     String id;
     try {
       DateTime due = DateTime.parse(dueDate);
       final check = due.compareTo(DateTime.now());
-      if (check >= 0) {
+      final now = TimeOfDay.now();
+      if (check == 0 && now.toString() == time) {
         return true;
       } else {
         final user = await _firestore

@@ -26,11 +26,13 @@ class WalkThroughWidget extends StatelessWidget {
         ),
         SizedBox(height: 30.0),
         Padding(
-          padding: EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width*0.3, vertical: 10.0),
+          padding: EdgeInsets.symmetric(
+              horizontal: MediaQuery.of(context).size.width * 0.3,
+              vertical: 10.0),
           child: OutlineButton(
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(7.0)),
-            padding: EdgeInsets.symmetric( vertical: 8.0),
+            padding: EdgeInsets.symmetric(vertical: 8.0),
 
             //color: Colors.indigo[200],
             borderSide: BorderSide(
@@ -48,11 +50,9 @@ class WalkThroughWidget extends StatelessWidget {
                 // ),
                 index <= 3
                     ? Text('SKIP',
-                        style: TextStyle(
-                            fontSize: 19.0, color: Colors.indigo))
+                        style: TextStyle(fontSize: 19.0, color: Colors.indigo))
                     : Text('Enter',
-                        style: TextStyle(
-                            fontSize: 17.0, color: Colors.indigo)),
+                        style: TextStyle(fontSize: 17.0, color: Colors.indigo)),
               ],
             ),
             onPressed: () {

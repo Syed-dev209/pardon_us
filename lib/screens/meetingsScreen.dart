@@ -41,26 +41,34 @@ class _MeetingScreenState extends State<MeetingScreen> {
         padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 13.0),
         child: Column(
           children: [
-            TextFormField(
-              controller: _channelController,
-              decoration: InputDecoration(
-                  labelText: 'Meeting Code',
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter meeting code here...',
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
-            ),
-            SizedBox(
-              height: 4.0,
-            ),
-            TextFormField(
-              controller: _passwordController,
-              decoration: InputDecoration(
-                  labelText: 'Meeting Password',
-                  border: OutlineInputBorder(),
-                  hintText: 'Enter meeting password here...',
-                  contentPadding:
-                      EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
+            // TextFormField(
+            //   controller: _channelController,
+            //   decoration: InputDecoration(
+            //       labelText: 'Meeting Code',
+            //       border: OutlineInputBorder(),
+            //       hintText: 'Enter meeting code here...',
+            //       contentPadding:
+            //           EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
+            // ),
+            // SizedBox(
+            //   height: 4.0,
+            // ),
+            // TextFormField(
+            //   controller: _passwordController,
+            //   decoration: InputDecoration(
+            //       labelText: 'Meeting Password',
+            //       border: OutlineInputBorder(),
+            //       hintText: 'Enter meeting password here...',
+            //       contentPadding:
+            //           EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
+            // ),
+            Text(
+              'By Pressing this Button you can create a new meeting.',
+              style: TextStyle(
+                  fontSize: 20.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.indigo[100]),
+              textAlign: TextAlign.center,
             ),
             SizedBox(
               height: 10.0,
@@ -71,10 +79,10 @@ class _MeetingScreenState extends State<MeetingScreen> {
                       "Teacher"
                   ? Text('Start Meeting')
                   : Text('Join Meeting'),
-              color: Colors.blue,
+              color: Colors.indigo,
               textColor: Colors.white,
               shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(3.0)),
+                  borderRadius: BorderRadius.circular(6.0)),
               onPressed: () async {
                 print('Start meeting pressed pressed');
                 await _joinMeeting();
@@ -129,7 +137,8 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
       // Define meetings options here
       var options = JitsiMeetingOptions()
-        ..room = _channelController.text
+        ..room =
+            Provider.of<UserDetails>(context, listen: false).currentClassCode
         ..serverURL = serverUrl
         ..subject = 'Video Conferencing'
         ..userDisplayName =
@@ -141,6 +150,12 @@ class _MeetingScreenState extends State<MeetingScreen> {
         ..featureFlag = featureFlag;
 
       debugPrint("JitsiMeetingOptions: $options");
+      JitsiMeet.addListener(JitsiMeetingListener(
+        onConferenceJoined: _onConferenceJoined,
+        onConferenceTerminated: _onConferenceTerminated,
+        onConferenceWillJoin: _onConferenceWillJoin,
+        onError: _onError,
+      ));
       await JitsiMeet.joinMeeting(
         options,
         listener: JitsiMeetingListener(onConferenceWillJoin: ({message}) {
@@ -176,7 +191,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
   };
 
   void _onConferenceWillJoin({message}) {
-    debugPrint("_onConferenceWillJoin broadcasted with message: $message");
+    print("_onConferenceWillJoin broadcasted with message: $message");
   }
 
   void _onConferenceJoined({message}) {
@@ -184,7 +199,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
   }
 
   void _onConferenceTerminated({message}) {
-    debugPrint("_onConferenceTerminated broadcasted with message: $message");
+    print("_onConferenceTerminated broadcasted with message: $message");
   }
 
   void _onPictureInPictureWillEnter({message}) {

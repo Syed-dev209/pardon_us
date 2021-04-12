@@ -85,7 +85,6 @@ class _LoginPageState extends State<LoginPage> {
     queryData = MediaQuery.of(context);
     return WillPopScope(
       child: Scaffold(
-        backgroundColor: Colors.white,
         body: ModalProgressHUD(
           inAsyncCall: showSpinner,
           child: SafeArea(
@@ -93,9 +92,9 @@ class _LoginPageState extends State<LoginPage> {
               height: queryData.size.height,
               width: queryData.size.width,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('images/blueBf.png'),
-                      fit: BoxFit.fill)),
+                image: DecorationImage(
+                    image: AssetImage('images/blueBf.png'), fit: BoxFit.fill),
+              ),
               child: BackdropFilter(
                 filter: ImageFilter.blur(sigmaX: 2, sigmaY: 2),
                 child: SingleChildScrollView(
@@ -259,8 +258,11 @@ class _LoginPageState extends State<LoginPage> {
                                           borderRadius:
                                               BorderRadius.circular(50.0)),
                                       onPressed: () {
-                                        Navigator.push(context,
-                                            ScaleRoute(page: RegisterUser()));
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    RegisterUser()));
                                       },
                                     ),
                                   ],

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:pardon_us/models/create_Mcqs_Model.dart';
 import 'package:pardon_us/models/userDeatils.dart';
+import 'package:pardon_us/screens/loadingScreen.dart';
 import 'package:pardon_us/screens/login_page.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -27,12 +28,18 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Directory dir = Directory();
   ShredPrefsServices obj = ShredPrefsServices();
-  Widget pageSelector = WalkThrough();
+  Widget pageSelector = LoadingScreen();
   checkFirstTime() async {
     bool check = await obj.showOnBoardingScreens();
+    print('at main init = $check');
     if (!check) {
-      pageSelector = LoginPage();
+      setState(() {
+        pageSelector = LoginPage();
+      });
     } else {
+      setState(() {
+        pageSelector = WalkThrough();
+      });
       await obj.setOnBoardingFlag();
     }
   }
@@ -51,9 +58,7 @@ class _MyAppState extends State<MyApp> {
         ChangeNotifierProvider(
           create: (context) => QuizModel(),
         ),
-        ChangeNotifierProvider(
-          create: (context) => UserDetails(),
-        ),
+        ChangeNotifierProvider(create: (context) => UserDetails()),
       ],
       child: MaterialApp(
           debugShowCheckedModeBanner: false,

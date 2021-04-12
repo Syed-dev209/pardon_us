@@ -33,14 +33,6 @@ class _QuizCardState extends State<QuizCard> {
   String marksObtained = '0';
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
-  void lockQuiz(String quizDocID, String dueDate) async {
-    bool check = await checkAttempt(quizDocID, dueDate);
-    print(check);
-    setState(() {
-      attempt = check;
-    });
-  }
-
   getStudentMarks() async {
     final user = await _firestore
         .collection('quizes')
@@ -54,19 +46,25 @@ class _QuizCardState extends State<QuizCard> {
         .get();
     for (var data in user.docs) {
       if (data.id != null) {
-        marksObtained = data.data()['marksObtained'];
+        setState(() {
+          marksObtained = data.data()['marksObtained'];
+        });
+
+        print('marks obtained $marksObtained');
       } else {
         break;
       }
     }
   }
 
-  Future<bool> checkAttempt(String quizDocID, String dueDate) async {
+  Future<bool> checkAttempt(
+      String quizDocID, String dueDate, String dueTime) async {
     String id;
     try {
       DateTime due = DateTime.parse(dueDate);
       final check = due.compareTo(DateTime.now());
-      if (check >= 0) {
+      final time = TimeOfDay.now();
+      if (check == 0 && time.toString() == widget.dueTime) {
         return true;
       } else {
         final user = await _firestore
@@ -97,11 +95,10 @@ class _QuizCardState extends State<QuizCard> {
   @override
   void initState() {
     // TODO: implement initState
-    lockQuiz(widget.docId, widget.dueDate);
+    super.initState();
     if (widget.participantStatus == 'Student') {
       getStudentMarks();
     }
-    super.initState();
   }
 
   @override
@@ -119,77 +116,80 @@ class _QuizCardState extends State<QuizCard> {
               borderRadius: BorderRadius.circular(10.0),
             ),
             child: ListTile(
-
-              leading: Container(
-                height: 60.0,
-                width: 60.0,
-                decoration: BoxDecoration(
-                  image: DecorationImage(
-                    image: AssetImage('images/quizCard.jpg'),
-                    fit: BoxFit.fill
-                  ),
-                  color: Colors.green,
-                  borderRadius: BorderRadius.circular(10.0)
-                ),
-              ),
-              title: Text(
-                widget.quizTitle,
-                style: TextStyle(
-                  color: Colors.black54,
-                  fontSize: 23.0,
-                  fontWeight: FontWeight.w400,
-                  letterSpacing: 2.0,
-                ),
-                overflow: TextOverflow.fade,
-                softWrap: false,
-                maxLines: 1,
-              ),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                 SizedBox(height: 10.0,),
-                  Text(
-                    DateTime.parse(widget.dueDate)
-                        .toLocal()
-                        .toString()
-                        .split(' ')[0],
-                    style: TextStyle(
+                leading: Container(
+                  height: 60.0,
+                  width: 60.0,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('images/quizCard.jpg'),
+                          fit: BoxFit.fill),
                       color: Colors.green,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    widget.dueTime,
-                    style: TextStyle(
-                      color: Colors.red,
-                      fontSize: 14.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
-              trailing: widget.participantStatus=='Student'? Column(
-                children: [
-                  Text('Marks\nObtained',
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+                title: Text(
+                  widget.quizTitle,
                   style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 14.0,
+                    color: Colors.black54,
+                    fontSize: 23.0,
+                    fontWeight: FontWeight.w400,
+                    letterSpacing: 2.0,
                   ),
-                    textAlign: TextAlign.center,
-                  ),
-                  Text('$marksObtained',style: TextStyle(
-                    color: Colors.green,
-                    fontSize: 16.0
-                  ),)
-                ],
-              ):Text(' ')
-            )
-        ),
+                  overflow: TextOverflow.fade,
+                  softWrap: false,
+                  maxLines: 1,
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(
+                      height: 10.0,
+                    ),
+                    Text(
+                      DateTime.parse(widget.dueDate)
+                          .toLocal()
+                          .toString()
+                          .split(' ')[0],
+                      style: TextStyle(
+                        color: Colors.green,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Text(
+                      widget.dueTime,
+                      style: TextStyle(
+                        color: Colors.red,
+                        fontSize: 14.0,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                ),
+                trailing: widget.participantStatus == 'Student'
+                    ? Column(
+                        children: [
+                          Text(
+                            'Marks\nObtained',
+                            style: TextStyle(
+                              color: Colors.green,
+                              fontSize: 14.0,
+                            ),
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(
+                            '$marksObtained',
+                            style:
+                                TextStyle(color: Colors.green, fontSize: 16.0),
+                          )
+                        ],
+                      )
+                    : Text(' '))),
       ),
-      onTap: () {
-        print(widget.lock);
-        if (!attempt || widget.participantStatus == 'Teacher') {
+      onTap: () async {
+        bool check =
+            await checkAttempt(widget.docId, widget.dueDate, widget.dueTime);
+        print('on quiz card : ${check}');
+        if (!check || widget.participantStatus == 'Teacher') {
           Provider.of<QuizModel>(context, listen: false).addQuizDetails(
               widget.quizTitle, widget.dueTime, widget.dueDate, widget.imgUrl);
           if (widget.filestatus == 'mcqs' &&

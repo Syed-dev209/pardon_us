@@ -9,7 +9,8 @@ class ClassMethods {
 
   void getCurrentUser() async {
     try {
-      final user = _auth.currentUser; //will return null if not logged in .Async method return future so await
+      final user = _auth
+          .currentUser; //will return null if not logged in .Async method return future so await
       if (user != null) {
         loggedInUser = user;
       }
@@ -18,7 +19,12 @@ class ClassMethods {
     }
   }
 
-  Future<bool> createClass({String title, String classCode, String imageUrl, String participantName, String email}) async {
+  Future<bool> createClass(
+      {String title,
+      String classCode,
+      String imageUrl,
+      String participantName,
+      String email}) async {
     print(email);
     var userID;
     await firestore.collection('classes').doc(classCode).set({
@@ -27,42 +33,60 @@ class ClassMethods {
       'teacher': participantName,
       'imageURL': imageUrl
     });
-    firestore.collection('classes').doc(classCode).collection('participants').doc().set({
-      'email': email,
-      'name': participantName,
-      'role': 'Teacher'
-    });
-    var user = await firestore.collection('user').where('email', isEqualTo: email).get();
+    firestore
+        .collection('classes')
+        .doc(classCode)
+        .collection('participants')
+        .doc()
+        .set({'email': email, 'name': participantName, 'role': 'Teacher'});
+    var user = await firestore
+        .collection('user')
+        .where('email', isEqualTo: email)
+        .get();
     for (var data in user.docs) {
       userID = data.id;
     }
-    firestore.collection('user').doc(userID).collection('joinedClasses').doc().set({
+    firestore
+        .collection('user')
+        .doc(userID)
+        .collection('joinedClasses')
+        .doc()
+        .set({
       'classCode': classCode,
-      'title':title,
-      'teacher':participantName,
-      'imageURL':imageUrl
+      'title': title,
+      'teacher': participantName,
+      'imageURL': imageUrl
     });
     return true;
   }
 
-  Future<String> joinClass({String classCode, String participantName, String email}) async {
-    print(email);
+  Future<String> joinClass(
+      {String classCode, String participantName, String email}) async {
     var userID;
-    String cd, titl,tea,img,code;
-    var classData = await firestore.collection('classes').where('classCode', isEqualTo: classCode).get(); //exist
-    if (classData == null) {
-      return 'not exist';
+    String cd, titl, tea, img, code, id;
+    var classData = await firestore
+        .collection('classes')
+        .where('classCode', isEqualTo: classCode)
+        .get(); //exist
+    for (var data in classData.docs) {
+      id = data.id;
     }
-    else {
+    if (id == null) {
+      return 'not exist';
+    } else {
       for (var data in classData.docs) {
         titl = data.data()['title'];
         tea = data.data()['teacher'];
         img = data.data()['imageURL'];
-        code=data.data()['classCode'];
+        code = data.data()['classCode'];
       }
-      if(tea==participantName){return 'Teacher';}
+      if (tea == participantName) {
+        return 'Teacher';
+      }
       getCurrentUser();
-      firestore.collection('classes').doc(classCode)
+      firestore
+          .collection('classes')
+          .doc(classCode)
           .collection('participants')
           .doc()
           .set({
@@ -71,14 +95,22 @@ class ClassMethods {
         'role': 'Student'
       });
 
-      var user = await firestore.collection('user').where(
-          'email', isEqualTo: loggedInUser.email).get();
+      var user = await firestore
+          .collection('user')
+          .where('email', isEqualTo: loggedInUser.email)
+          .get();
       for (var data in user.docs) {
         userID = data.id;
-        if(classCode==data.data()['classCode']){return 'Member';}
+        if (classCode == data.data()['classCode']) {
+          return 'Member';
+        }
       }
-      firestore.collection('user').doc(userID)
-          .collection('joinedClasses').doc().set({
+      firestore
+          .collection('user')
+          .doc(userID)
+          .collection('joinedClasses')
+          .doc()
+          .set({
         'classCode': classCode,
         'title': titl,
         'teacher': tea,
@@ -88,33 +120,59 @@ class ClassMethods {
     }
   }
 
-  Future<bool> exitClass(String classCode,String userEmail)async{
-    var userID,classId;
-    var user,clas;
+  Future<bool> exitClass(String classCode, String userEmail) async {
+    var userID, classId;
+    var user, clas;
     //Deleting class from user collection
-     user = await firestore.collection('user').where('email', isEqualTo: userEmail).get();
+    user = await firestore
+        .collection('user')
+        .where('email', isEqualTo: userEmail)
+        .get();
     for (var data in user.docs) {
       userID = data.id;
     }
-    clas= await firestore.collection('user').doc(userID).collection('joinedClasses').where('classCode',isEqualTo: classCode).get();
+    clas = await firestore
+        .collection('user')
+        .doc(userID)
+        .collection('joinedClasses')
+        .where('classCode', isEqualTo: classCode)
+        .get();
     for (var data in clas.docs) {
       classId = data.id;
     }
-    firestore.collection('user').doc(userID).collection('joinedClasses').doc(classId).delete();
+    firestore
+        .collection('user')
+        .doc(userID)
+        .collection('joinedClasses')
+        .doc(classId)
+        .delete();
     //Deleting user from class collection
-    user = await firestore.collection('classes').doc(classCode).collection('participants').where('email', isEqualTo: userEmail).get();
+    user = await firestore
+        .collection('classes')
+        .doc(classCode)
+        .collection('participants')
+        .where('email', isEqualTo: userEmail)
+        .get();
     for (var data in user.docs) {
       userID = data.id;
     }
-    firestore.collection('classes').doc(classCode).collection('participants').doc(userID).delete();
+    firestore
+        .collection('classes')
+        .doc(classCode)
+        .collection('participants')
+        .doc(userID)
+        .delete();
     return true;
   }
 
-
-  Future<bool> deleteClass(String classCode)async{
+  Future<bool> deleteClass(String classCode) async {
     //Delete class from users
-    var participants=await firestore.collection('classes').doc(classCode).collection('participants').get();
-    for(var stdts in participants.docs){
+    var participants = await firestore
+        .collection('classes')
+        .doc(classCode)
+        .collection('participants')
+        .get();
+    for (var stdts in participants.docs) {
       exitClass(classCode, stdts.get('email'));
     }
     //Delete class from messages
@@ -125,7 +183,7 @@ class ClassMethods {
 
     //Delete class from assignment
     firestore.collection('assignments').doc(classCode).delete();
-    
+
     //Delete Class
     firestore.collection('classes').doc(classCode).delete();
     return true;

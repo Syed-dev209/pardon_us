@@ -8,14 +8,14 @@ import 'package:form_field_validator/form_field_validator.dart';
 import 'package:pardon_us/screens/start_screen.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 
-class ShowClassDialogs{
-
-  ClassMethods obj= new ClassMethods();
+class ShowClassDialogs {
+  ClassMethods obj = new ClassMethods();
   // String getClassCode(){
   //   return classCode.text;
   // }
-  Future<Widget> displayJoinClassDialog(BuildContext context,String userName,String email)async{
-    GlobalKey<FormState> _key= GlobalKey<FormState>();
+  Future<Widget> displayJoinClassDialog(
+      BuildContext context, String userName, String email) async {
+    GlobalKey<FormState> _key = GlobalKey<FormState>();
     TextEditingController classCode = TextEditingController();
     return showDialog(
         context: context,
@@ -27,43 +27,44 @@ class ShowClassDialogs{
               child: TextFormField(
                 controller: classCode,
                 decoration: InputDecoration(hintText: "Enter class code here"),
-                validator: RequiredValidator(errorText: 'Do not leave this blank'),
+                validator:
+                    RequiredValidator(errorText: 'Do not leave this blank'),
               ),
             ),
             actions: <Widget>[
               RaisedButton(
-                child: Text('Join',
-                  style: TextStyle(
-                      color: Colors.white
-                  ),),
+                child: Text(
+                  'Join',
+                  style: TextStyle(color: Colors.white),
+                ),
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7.0)
-                ),
-                onPressed: ()async{
-                  try{
-                    if(_key.currentState.validate()) {
+                    borderRadius: BorderRadius.circular(7.0)),
+                onPressed: () async {
+                  try {
+                    if (_key.currentState.validate()) {
                       String joined = await obj.joinClass(
                           classCode: classCode.text,
                           participantName: userName,
                           email: email);
                       if (joined == 'enter') {
                         print('class joined');
-                          classCode.clear();
+                        classCode.clear();
                         Navigator.of(context).pop();
-                      }
-                      else if(joined=='Member'){
-                        print('You are already a member');
-                      }
-                      else if(joined=='Teacher'){
-                        print('You are the Teacher');
-                      }
-                      else{
+                      } else if (joined == 'Member') {
+                        _onBasicAlertPressed(context, 'Invalid Registration',
+                            'You are already registered in this class.');
+                      } else if (joined == 'Teacher') {
+                        _onBasicAlertPressed(context, 'Invalid Registration',
+                            'You can not join the class you created.');
+                      } else {
+                        //Navigator.pop(context);
+                        _onBasicAlertPressed(context, 'Invalid code',
+                            'This class does\'nt exists.');
                         print('class not exist');
                       }
                     }
-                  }
-                  catch(e){
+                  } catch (e) {
                     print(e);
                   }
                 },
@@ -79,17 +80,20 @@ class ShowClassDialogs{
         });
   }
 
-  Future<Widget> displayDialog(BuildContext context,String userName,String email) async {
-    GlobalKey<FormState> _key= GlobalKey<FormState>();
+  Future<Widget> displayDialog(
+      BuildContext context, String userName, String email) async {
+    GlobalKey<FormState> _key = GlobalKey<FormState>();
     TextEditingController className = TextEditingController();
     TextEditingController imageURl = TextEditingController();
     PlatformFile _image;
     print('email:= $email)');
 
-    const _chars = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
+    const _chars =
+        'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890';
     Random _rnd = Random();
-    String getRandomString(int length) => String.fromCharCodes(Iterable.generate(
-        length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
+    String getRandomString(int length) =>
+        String.fromCharCodes(Iterable.generate(
+            length, (_) => _chars.codeUnitAt(_rnd.nextInt(_chars.length))));
     return showDialog(
         context: context,
         builder: (context) {
@@ -106,16 +110,20 @@ class ShowClassDialogs{
                     Expanded(
                       child: TextFormField(
                         controller: className,
-                        decoration: InputDecoration(hintText: "Enter class name"),
-                        validator: RequiredValidator(errorText: 'This can\'t be blank'),
+                        decoration:
+                            InputDecoration(hintText: "Enter class name"),
+                        validator: RequiredValidator(
+                            errorText: 'This can\'t be blank'),
                       ),
                     ),
                     //SizedBox(height: -10.0,),
                     Expanded(
                       child: TextFormField(
                         controller: imageURl,
-                        decoration: InputDecoration(hintText: "Enter class image url"),
-                        validator: RequiredValidator(errorText: 'This can\'t be blank'),
+                        decoration:
+                            InputDecoration(hintText: "Enter class image url"),
+                        validator: RequiredValidator(
+                            errorText: 'This can\'t be blank'),
                       ),
                     ),
                   ],
@@ -124,33 +132,33 @@ class ShowClassDialogs{
             ),
             actions: <Widget>[
               RaisedButton(
-                child: Text('Create',
-                  style: TextStyle(
-                      color: Colors.white
-                  ),),
+                child: Text(
+                  'Create',
+                  style: TextStyle(color: Colors.white),
+                ),
                 color: Colors.blue,
                 shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(7.0)
-                ),
-                onPressed: ()async{
+                    borderRadius: BorderRadius.circular(7.0)),
+                onPressed: () async {
                   try {
                     String classCode = getRandomString(4);
-                    if(_key.currentState.validate()) {
+                    if (_key.currentState.validate()) {
                       bool created = await obj.createClass(
                           title: className.text,
                           classCode: classCode,
                           imageUrl: imageURl.text,
                           participantName: userName,
-                          email: email
-                      );
+                          email: email);
                       if (created) {
                         className.clear();
                         imageURl.clear();
-                      _onButtonAlertPressed(context, 'Class Created Successfully', 'Your class code: $classCode');
+                        _onButtonAlertPressed(
+                            context,
+                            'Class Created Successfully',
+                            'Your class code: $classCode');
                       }
                     }
-                  }
-                  catch(e){
+                  } catch (e) {
                     print(e);
                   }
 
@@ -159,7 +167,7 @@ class ShowClassDialogs{
               ),
               FlatButton(
                 child: new Text('CANCEL'),
-                onPressed: (){
+                onPressed: () {
                   Navigator.pop(context);
                 },
               )
@@ -168,26 +176,22 @@ class ShowClassDialogs{
         });
   }
 }
-_onButtonAlertPressed(context,String title,String description) {
-  Alert(
-      context: context,
-      title: title,
-      desc: description,
-      buttons: [
-        DialogButton(
-          child: Text('Proceed',style: TextStyle(
-              color: Colors.white
-          ),),
-          color: Colors.indigo,
-          onPressed: (){
 
-            Navigator.push(
-                context, FadeRoute(page:Start()));
-          },
-        )
-      ]
-  )
-      .show();
+_onBasicAlertPressed(context, String title, String description) {
+  Alert(context: context, title: title, desc: description).show();
 }
 
-
+_onButtonAlertPressed(context, String title, String description) {
+  Alert(context: context, title: title, desc: description, buttons: [
+    DialogButton(
+      child: Text(
+        'Proceed',
+        style: TextStyle(color: Colors.white),
+      ),
+      color: Colors.indigo,
+      onPressed: () {
+        Navigator.push(context, FadeRoute(page: Start()));
+      },
+    )
+  ]).show();
+}

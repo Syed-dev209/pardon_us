@@ -1,12 +1,17 @@
 import 'dart:async';
-
 import 'package:agora_rtc_engine/rtc_engine.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:jitsi_meet/feature_flag/feature_flag.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
 import 'package:jitsi_meet/jitsi_meeting_listener.dart';
 import 'package:jitsi_meet/room_name_constraint.dart';
 import 'package:jitsi_meet/room_name_constraint_type.dart';
+import 'package:pardon_us/components/alertBox.dart';
+import 'package:pardon_us/models/excelServices.dart';
+import 'package:pardon_us/models/meetingController.dart';
+import 'package:pardon_us/models/messagesMethods.dart';
 import 'package:pardon_us/models/userDeatils.dart';
 import 'package:pardon_us/screens/CallPage2.dart';
 import 'package:pardon_us/screens/callPage.dart';
@@ -26,7 +31,11 @@ class _MeetingScreenState extends State<MeetingScreen> {
   final _passwordController = TextEditingController();
   bool _validateError = false;
   ClientRole _role;
-
+  MeetingController _meetingController;
+  bool enableButton = false;
+  String fileName;
+  ExcelSheet exc = ExcelSheet();
+  FirebaseFirestore _firestore = FirebaseFirestore.instance;
   @override
   void dispose() {
     // dispose input controller
@@ -36,79 +45,196 @@ class _MeetingScreenState extends State<MeetingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 13.0),
-        child: Column(
-          children: [
-            // TextFormField(
-            //   controller: _channelController,
-            //   decoration: InputDecoration(
-            //       labelText: 'Meeting Code',
-            //       border: OutlineInputBorder(),
-            //       hintText: 'Enter meeting code here...',
-            //       contentPadding:
-            //           EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
-            // ),
-            // SizedBox(
-            //   height: 4.0,
-            // ),
-            // TextFormField(
-            //   controller: _passwordController,
-            //   decoration: InputDecoration(
-            //       labelText: 'Meeting Password',
-            //       border: OutlineInputBorder(),
-            //       hintText: 'Enter meeting password here...',
-            //       contentPadding:
-            //           EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0)),
-            // ),
-            Text(
-              'By Pressing this Button you can create a new meeting.',
-              style: TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.indigo[100]),
-              textAlign: TextAlign.center,
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 13.0),
+      child: Column(
+        children: [
+          Text(
+            Provider.of<UserDetails>(context, listen: false)
+                        .UserParticipantStatus ==
+                    "Teacher"
+                ? 'By Pressing this Button you can create a new meeting.'
+                : 'By Pressing this button you can join the meeting.',
+            style: TextStyle(
+                fontSize: 20.0,
+                fontWeight: FontWeight.bold,
+                color: Colors.indigo[100]),
+            textAlign: TextAlign.center,
+          ),
+          SizedBox(
+            height: 10.0,
+          ),
+          RaisedButton(
+            child: Provider.of<UserDetails>(context, listen: false)
+                        .UserParticipantStatus ==
+                    "Teacher"
+                ? Text('Start Meeting')
+                : Text('Join Meeting'),
+            color: Colors.indigo,
+            textColor: Colors.white,
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(6.0)),
+            onPressed: () async {
+              _meetingController = MeetingController();
+              print('Start meeting pressed pressed');
+
+              ///for TEACHER
+              if (Provider.of<UserDetails>(context, listen: false)
+                      .UserParticipantStatus ==
+                  "Teacher") {
+                fileName = exc.createNewExcel(
+                    Provider.of<UserDetails>(context, listen: false)
+                        .currentClassCode);
+
+                bool check = await _meetingController.createMeeting(context);
+                if (check) {
+                  setState(() {
+                    enableButton = true;
+                  });
+                  await _joinMeeting();
+                }
+              }
+
+              ///Student
+              else {
+                bool check = await _meetingController.onJoinMeeting(context);
+                if (check) {
+                  await _joinMeeting();
+                } else {
+                  AlertBoxes _alert = AlertBoxes();
+                  _alert.simpleAlertBox(context, Text('No host found'),
+                      Text('Your instructor has\'nt started meeting yet.'), () {
+                    Navigator.pop(context);
+                  });
+                }
+              }
+            },
+          ),
+          Provider.of<UserDetails>(context, listen: false)
+                      .UserParticipantStatus ==
+                  "Teacher"
+              ? ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    primary: Colors.indigo,
+                  ),
+                  onPressed: enableButton
+                      ? () async {
+                          _meetingController = MeetingController();
+                          if (Provider.of<UserDetails>(context, listen: false)
+                                  .UserParticipantStatus ==
+                              'Teacher') {
+                            print('terminator triggered, I am Teacher');
+                            bool check = await _meetingController.endMeeting(
+                                context, fileName, exc);
+                            print('prinitng check = $check');
+                            if (check) {
+                              print(
+                                  'attendance uploaded and mission successful');
+                            } else {
+                              print('end meeting nahi chla ');
+                            }
+                          } else {
+                            print('terminator triggered, I am Student');
+                            await _meetingController.onLeavingMeeting(context);
+                          }
+                          setState(() {
+                            enableButton = false;
+                          });
+                        }
+                      : null,
+                  child: Text('Generate Attendance Report'),
+                )
+              : Text(' '),
+          SizedBox(
+            height: 20.0,
+          ),
+          SizedBox(
+            height: 30.0,
+            child: Divider(
+              color: Colors.black26,
             ),
-            SizedBox(
-              height: 10.0,
-            ),
-            RaisedButton(
-              child: Provider.of<UserDetails>(context, listen: false)
-                          .UserParticipantStatus ==
-                      "Teacher"
-                  ? Text('Start Meeting')
-                  : Text('Join Meeting'),
-              color: Colors.indigo,
-              textColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(6.0)),
-              onPressed: () async {
-                print('Start meeting pressed pressed');
-                await _joinMeeting();
-              },
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            SizedBox(
-              height: 30.0,
-              child: Divider(
-                color: Colors.black26,
-              ),
-              width: 300.0,
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            ListTile(
-              leading: Image.asset('images/csv.png'),
-              title: Text('Attendance Report'),
-              subtitle: Text('Date:- 20/12/2010 Time:- 40:00 min'),
-            )
-          ],
-        ),
+            width: 300.0,
+          ),
+          SizedBox(
+            height: 20.0,
+          ),
+          Provider.of<UserDetails>(context, listen: false)
+                      .UserParticipantStatus ==
+                  "Teacher"
+              ? Container(
+                  //color: Colors.indigo,
+                  height: MediaQuery.of(context).size.height * 0.45,
+                  child: SingleChildScrollView(
+                    child: StreamBuilder(
+                      stream: _firestore
+                          .collection('meetings')
+                          .doc(Provider.of<UserDetails>(context, listen: false)
+                              .currentClassCode)
+                          .collection('meetingRecord')
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: CircularProgressIndicator(),
+                          );
+                        }
+                        final record = snapshot.data.docs;
+                        List<Widget> tiles = [];
+                        for (var data in record) {
+                          if (data.data()['fileUrl'] != ' ') {
+                            tiles.add(reportTile(data.data()['DateTime'],
+                                data.data()['fileUrl']));
+                          }
+                        }
+                        return Column(
+                          children: tiles,
+                        );
+                      },
+                    ),
+                  ),
+                )
+              : Text(' ')
+        ],
       ),
+    );
+  }
+
+  Widget reportTile(String date, String fileUrl) {
+    bool loader = false;
+    return ListTile(
+      onTap: () {
+        setState(() {
+          loader = true;
+        });
+        MessengerMethods _msg = MessengerMethods();
+        _msg.sendLink(
+            senderName:
+                Provider.of<UserDetails>(context, listen: false).username,
+            classCode: Provider.of<UserDetails>(context, listen: false)
+                .currentClassCode,
+            link: fileUrl,
+            type: 'link');
+        setState(() {
+          loader = false;
+        });
+
+        AlertBoxes _alert = AlertBoxes();
+        _alert.simpleAlertBox(context, Text('Congratulations'),
+            Text('Attendance report has been sent to students via messenger'),
+            () {
+          Navigator.pop(context);
+        });
+      },
+      trailing:
+          loader ? CircularProgressIndicator() : Icon(Icons.share_outlined),
+      leading: Image.asset('images/csv.png'),
+      title: Text('Attendance Report'),
+      subtitle: Text('Date:- $date'),
     );
   }
 
@@ -150,12 +276,14 @@ class _MeetingScreenState extends State<MeetingScreen> {
         ..featureFlag = featureFlag;
 
       debugPrint("JitsiMeetingOptions: $options");
-      JitsiMeet.addListener(JitsiMeetingListener(
-        onConferenceJoined: _onConferenceJoined,
-        onConferenceTerminated: _onConferenceTerminated,
-        onConferenceWillJoin: _onConferenceWillJoin,
-        onError: _onError,
-      ));
+      JitsiMeet.addListener(
+        JitsiMeetingListener(
+          onConferenceJoined: _onConferenceJoined,
+          onConferenceTerminated: _onConferenceTerminated,
+          onConferenceWillJoin: _onConferenceWillJoin,
+          onError: _onError,
+        ),
+      );
       await JitsiMeet.joinMeeting(
         options,
         listener: JitsiMeetingListener(onConferenceWillJoin: ({message}) {
@@ -163,7 +291,7 @@ class _MeetingScreenState extends State<MeetingScreen> {
         }, onConferenceJoined: ({message}) {
           debugPrint("${options.room} joined with message: $message");
         }, onConferenceTerminated: ({message}) {
-          debugPrint("${options.room} terminated with message: $message");
+          debugPrint("${options.room} terminated message: $message");
         }, onPictureInPictureWillEnter: ({message}) {
           debugPrint("${options.room} entered PIP mode with message: $message");
         }, onPictureInPictureTerminated: ({message}) {
@@ -215,54 +343,4 @@ class _MeetingScreenState extends State<MeetingScreen> {
   _onError(error) {
     debugPrint("_onError broadcasted: $error");
   }
-  // Future<void> onJoin() async {
-  //   Token=_passwordController.text;
-  //   if (_channelController.text.isNotEmpty) {
-  //     // Wait for the permission for camera and microphone
-  //     await _handleCameraAndMic(Permission.camera);
-  //     await _handleCameraAndMic(Permission.microphone);
-  //     //if(await Permission.camera.request().isGranted)
-  //     // Enter the page for live streaming and join channel using the channel name and role specified in the login page
-  //     if (Provider.of<UserDetails>(context, listen: false)
-  //             .UserParticipantStatus ==
-  //         "Teacher") {
-  //       _role = ClientRole.Broadcaster;
-  //     } else {
-  //       _role = ClientRole.Audience;
-  //     }
-  //     await Navigator.push(
-  //       context,
-  //       MaterialPageRoute(
-  //         builder: (context) => CallPage(
-  //           channelName: _channelController.text,
-  //           role: ClientRole.Broadcaster,
-  //         ),
-  //       ),
-  //     );
-  //     // await Navigator.push(
-  //     //   context,
-  //     //   MaterialPageRoute(
-  //     //     builder: (context) => CallPageSecond(
-  //     //       appId: 'f235a1310fcc4347af2e567d3a742a3c',
-  //     //       channel: _channelController.text,
-  //     //       video: true,
-  //     //       audio: true,
-  //     //       screen: true,
-  //     //       profile: '480p',
-  //     //       width: '1000',
-  //     //       height: '1000',
-  //     //       framerate: ' ',
-  //     //       codec: 'h264',
-  //     //       mode: 'live',
-  //     //     ),
-  //     //   ),
-  //     // );
-  //   }
-  // }
-  //
-  // // Ask for the permission for camera and microphone
-  // Future<void> _handleCameraAndMic(Permission permission) async {
-  //   final status = await permission.request();
-  //   print(status);
-  // }
 }

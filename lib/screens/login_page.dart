@@ -8,6 +8,7 @@ import 'package:modal_progress_hud/modal_progress_hud.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:pardon_us/animation_transition/scale_transition.dart';
 import 'package:pardon_us/models/connectivity.dart';
+import 'package:pardon_us/models/excelServices.dart';
 import 'package:pardon_us/models/login_methods.dart';
 import 'package:pardon_us/models/userDeatils.dart';
 import 'package:pardon_us/screens/register_user.dart';

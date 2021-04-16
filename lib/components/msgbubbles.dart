@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:pardon_us/animation_transition/scale_transition.dart';
 import 'package:pardon_us/screens/show_image.dart';
 import 'package:pardon_us/screens/show_video.dart';
@@ -8,7 +9,7 @@ class MessageBubble extends StatelessWidget {
   final String sender, text;
   bool isMe, isText;
   String type;
-  Directory dir= Directory();
+  Directory dir = Directory();
 
   MessageBubble({this.sender, this.text, this.isMe, this.type = 'text'});
 
@@ -50,8 +51,8 @@ class MessageBubble extends StatelessWidget {
                       )
                     : type == 'image'
                         ? Stack(
-                          children: [
-                            GestureDetector(
+                            children: [
+                              GestureDetector(
                                 child: Container(
                                   height: 200.0,
                                   width: 200.0,
@@ -70,79 +71,105 @@ class MessageBubble extends StatelessWidget {
                                       )));
                                 },
                               ),
-                           isMe?Padding(padding:EdgeInsets.symmetric(horizontal: 1.0) ): Padding(
-                             padding: EdgeInsets.only(top: 210.0),
-                             child: GestureDetector(
-                               child: Container(
-                                 height: 30.0,
-                                 width: 30.0,
-                                 decoration: BoxDecoration(
-                                     color: Colors.green,
-                                     borderRadius: BorderRadius.all(Radius.circular(15.0))
-                                 ),
-                                 child: Icon(Icons.download_rounded,size: 20,color: Colors.white,),
-                               ),
-                               onTap: () async {
-                                 try {
-                                   bool check = await dir.download(text);
-                                 }
-                                 catch(e){
-                                   print(e);
-                                 }
-
-                               },
-                             ),
-                           )
-                          ],
-                        )
-                        : GestureDetector(
-                            child: Stack(
-                              children: [
-                                Container(
-                                  height: 200.0,
-                                  width: 200.0,
-                                  decoration: BoxDecoration(
-                                      color: Colors.black,
-                                      borderRadius: BorderRadius.circular(4.0)),
-                                  child: Icon(
-                                    Icons.play_circle_filled,
-                                    size: 40.0,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                               !isMe? Padding(
-                                  padding: EdgeInsets.only(top: 210.0),
-                                  child: GestureDetector(
-                                    child: Container(
-                                      height: 30.0,
-                                      width: 30.0,
-                                      decoration: BoxDecoration(
-                                          color: Colors.green,
-                                          borderRadius: BorderRadius.all(Radius.circular(15.0))
+                              isMe
+                                  ? Padding(
+                                      padding:
+                                          EdgeInsets.symmetric(horizontal: 1.0))
+                                  : Padding(
+                                      padding: EdgeInsets.only(top: 210.0),
+                                      child: GestureDetector(
+                                        child: Container(
+                                          height: 30.0,
+                                          width: 30.0,
+                                          decoration: BoxDecoration(
+                                              color: Colors.green,
+                                              borderRadius: BorderRadius.all(
+                                                  Radius.circular(15.0))),
+                                          child: Icon(
+                                            Icons.download_rounded,
+                                            size: 20,
+                                            color: Colors.white,
+                                          ),
+                                        ),
+                                        onTap: () async {
+                                          try {
+                                            bool check =
+                                                await dir.download(text);
+                                          } catch (e) {
+                                            print(e);
+                                          }
+                                        },
                                       ),
-                                      child: Icon(Icons.download_rounded,size: 20,color:Colors.white,),
+                                    )
+                            ],
+                          )
+                        : type == "link"
+                            ? LinkPreview(
+                                text: text,
+                                width: 200.0,
+                                linkStyle: TextStyle(
+                                    color: isMe
+                                        ? Colors.white
+                                        : Colors.indigoAccent),
+                              )
+                            : GestureDetector(
+                                child: Stack(
+                                  children: [
+                                    Container(
+                                      height: 200.0,
+                                      width: 200.0,
+                                      decoration: BoxDecoration(
+                                          color: Colors.black,
+                                          borderRadius:
+                                              BorderRadius.circular(4.0)),
+                                      child: Icon(
+                                        Icons.play_circle_filled,
+                                        size: 40.0,
+                                        color: Colors.white,
+                                      ),
                                     ),
-                                    onTap: () async {
-                                      try {
-                                        bool check = await dir.download(text);
-                                      }
-                                      catch(e){
-                                        print(e);
-                                      }
-                                    },
-                                  ),
-                                ):Container()
-                              ],
-                            ),
-                            onTap: () {
-                              Navigator.push(
-                                  context,
-                                  ScaleRoute(
-                                      page: ShowVideo(
-                                    videoPath: text,
-                                  )));
-                            },
-                          )),
+                                    !isMe
+                                        ? Padding(
+                                            padding:
+                                                EdgeInsets.only(top: 210.0),
+                                            child: GestureDetector(
+                                              child: Container(
+                                                height: 30.0,
+                                                width: 30.0,
+                                                decoration: BoxDecoration(
+                                                    color: Colors.green,
+                                                    borderRadius:
+                                                        BorderRadius.all(
+                                                            Radius.circular(
+                                                                15.0))),
+                                                child: Icon(
+                                                  Icons.download_rounded,
+                                                  size: 20,
+                                                  color: Colors.white,
+                                                ),
+                                              ),
+                                              onTap: () async {
+                                                try {
+                                                  bool check =
+                                                      await dir.download(text);
+                                                } catch (e) {
+                                                  print(e);
+                                                }
+                                              },
+                                            ),
+                                          )
+                                        : Container()
+                                  ],
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      ScaleRoute(
+                                          page: ShowVideo(
+                                        videoPath: text,
+                                      )));
+                                },
+                              )),
           ),
         ],
       ),

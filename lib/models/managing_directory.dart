@@ -8,9 +8,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 class Directory {
   void createFolder() async {
-    if (await Permission.storage
-        .request()
-        .isGranted) {
+    if (await Permission.storage.request().isGranted) {
       //String directory = (await getExternalStorageDirectory()).path;
       if (await io.Directory("/storage/emulated/0/Pardon Us").exists() !=
           true) {
@@ -25,13 +23,11 @@ class Directory {
   }
 
   Future<bool> download(String link) async {
-    try{
-      if(await canLaunch(link))
-      {
+    try {
+      if (await canLaunch(link)) {
         await launch(link);
       }
-    }
-    catch(e){
+    } catch (e) {
       print(e);
     }
   }

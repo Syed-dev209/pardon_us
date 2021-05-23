@@ -15,11 +15,11 @@
       },
       "oauth_client": [
         {
-          "client_id": "647268017952-phq4bcr0bvevgi3hqa5n3gtqv3p6u0mu.apps.googleusercontent.com",
+          "client_id": "647268017952-cacq3of05rbe8ruaatft307ugqk3m7im.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ilhan.com.pardon_us",
-            "certificate_hash": "52cd9f82a78c0100c87dc7d07624b724784fc332"
+            "certificate_hash": "9e34276bbf885999beb0115c78d8969b8e2b0dbe"
           }
         },
         {

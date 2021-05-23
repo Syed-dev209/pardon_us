@@ -45,8 +45,8 @@ android {
         applicationId "ilhan.com.pardon_us"
         minSdkVersion 24
         targetSdkVersion 29
-        versionCode 4
-        versionName "2.2"
+        versionCode 6
+        versionName "2.4"
     }
 
     signingConfigs{

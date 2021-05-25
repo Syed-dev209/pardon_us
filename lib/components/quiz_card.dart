@@ -30,10 +30,11 @@ class QuizCard extends StatefulWidget {
 class _QuizCardState extends State<QuizCard> {
   MediaQueryData queryData;
   bool attempt = false;
-  String marksObtained = '0';
+  String marksObtained = '0', time;
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
   getStudentMarks() async {
+    time = widget.dueTime.substring(10, widget.dueTime.length - 1);
     final user = await _firestore
         .collection('quizes')
         .doc(Provider.of<UserDetails>(context, listen: false).currentClassCode)
@@ -62,30 +63,39 @@ class _QuizCardState extends State<QuizCard> {
     String id;
     try {
       DateTime due = DateTime.parse(dueDate);
+      print(dueDate);
       final check = due.compareTo(DateTime.now());
       final time = TimeOfDay.now();
-      if (check == 0 && time.toString() == widget.dueTime) {
+      var now = DateTime.now();
+      int mDiff = due.month - now.month;
+      int yDiff = due.year - now.year;
+      int dDiff = due.day - now.day;
+      print("$mDiff $yDiff $dDiff");
+      bool attempted;
+      final user = await _firestore
+          .collection('quizes')
+          .doc(
+              Provider.of<UserDetails>(context, listen: false).currentClassCode)
+          .collection('quiz')
+          .doc(quizDocID)
+          .collection('attemptedBy')
+          .where('name',
+              isEqualTo:
+                  Provider.of<UserDetails>(context, listen: false).username)
+          .get();
+      for (var data in user.docs) {
+        id = data.id;
+      }
+      if (id != null) {
+        attempted = true;
+      } else {
+        attempted = false;
+      }
+      print(check);
+      if (dDiff >= 0 && mDiff >= 0 && yDiff >= 0 && !attempted) {
         return true;
       } else {
-        final user = await _firestore
-            .collection('quizes')
-            .doc(Provider.of<UserDetails>(context, listen: false)
-                .currentClassCode)
-            .collection('quiz')
-            .doc(quizDocID)
-            .collection('attemptedBy')
-            .where('name',
-                isEqualTo:
-                    Provider.of<UserDetails>(context, listen: false).username)
-            .get();
-        for (var data in user.docs) {
-          id = data.id;
-        }
-        if (id != null) {
-          return true;
-        } else {
-          return false;
-        }
+        return false;
       }
     } catch (e) {
       return false;
@@ -156,7 +166,7 @@ class _QuizCardState extends State<QuizCard> {
                       ),
                     ),
                     Text(
-                      widget.dueTime,
+                      time,
                       style: TextStyle(
                         color: Colors.red,
                         fontSize: 14.0,

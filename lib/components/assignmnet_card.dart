@@ -30,8 +30,10 @@ class _AssignmentCardState extends State<AssignmentCard> {
   AssignmentModel assignmentModel;
   String marksObtained = '0';
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  String time;
 
   getStudentMarks() async {
+    time = widget.dueTime.substring(10, widget.dueTime.length - 1);
     final user = await _firestore
         .collection('assignments')
         .doc(Provider.of<UserDetails>(context, listen: false).currentClassCode)
@@ -50,6 +52,48 @@ class _AssignmentCardState extends State<AssignmentCard> {
       } else {
         break;
       }
+    }
+  }
+
+  Future<bool> checkAttempt(
+      String assDocID, String dueDate, String dueTime) async {
+    String id;
+    try {
+      DateTime due = DateTime.parse(dueDate);
+      final check = due.compareTo(DateTime.now());
+      final time = TimeOfDay.now();
+      var now = DateTime.now();
+      int mDiff = due.month - now.month;
+      int yDiff = due.year - now.year;
+      int dDiff = due.day - now.day;
+      print("$mDiff $yDiff $dDiff");
+      bool attempted;
+      final user = await _firestore
+          .collection('assignments')
+          .doc(
+              Provider.of<UserDetails>(context, listen: false).currentClassCode)
+          .collection('assignment')
+          .doc(assDocID)
+          .collection('attemptedBy')
+          .where('name',
+              isEqualTo:
+                  Provider.of<UserDetails>(context, listen: false).username)
+          .get();
+      for (var data in user.docs) {
+        id = data.id;
+      }
+      if (id != null) {
+        attempted = true;
+      } else {
+        attempted = false;
+      }
+      if (dDiff >= 0 && mDiff >= 0 && yDiff >= 0 && !attempted) {
+        return true;
+      } else {
+        return false;
+      }
+    } catch (e) {
+      return false;
     }
   }
 
@@ -118,7 +162,7 @@ class _AssignmentCardState extends State<AssignmentCard> {
                     ),
                   ),
                   Text(
-                    widget.dueTime,
+                    time,
                     style: TextStyle(
                       color: Colors.red,
                       fontSize: 14.0,
@@ -147,14 +191,17 @@ class _AssignmentCardState extends State<AssignmentCard> {
                   : Text(' ')),
         ),
       ),
-      onTap: () {
+      onTap: () async {
         AlertBoxes _alert = AlertBoxes();
         DateTime dueDate = DateTime.parse(widget.dueDate);
         int checkLock = dueDate.compareTo(DateTime.now());
         final time = TimeOfDay.now();
-        print(checkLock);
+
+        bool check =
+            await checkAttempt(widget.docId, widget.dueDate, widget.dueTime);
+        print(check);
         if (widget.participantStatus == 'Student') {
-          if (checkLock != 0 && time.toString() != widget.dueTime) {
+          if (check) {
             print(widget.docId);
             assignmentModel = AssignmentModel();
             assignmentModel.setAssignmentDetails(

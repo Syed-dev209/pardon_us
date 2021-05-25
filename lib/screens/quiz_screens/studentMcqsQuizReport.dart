@@ -23,7 +23,7 @@ class _StudentMcqsQuizReportState extends State<StudentMcqsQuizReport> {
   String name;
   DateTime submittedTime;
   String marks;
-  bool loaded=false;
+  bool loaded = false;
 
   void getStudentAnswers() async {
     print('entered');
@@ -36,23 +36,25 @@ class _StudentMcqsQuizReportState extends State<StudentMcqsQuizReport> {
         .doc(widget.stdDocId)
         .get();
     name = stdData.data()['name'];
-    marks=stdData.data()['marksObtained'];
+    marks = stdData.data()['marksObtained'];
     submittedTime = DateTime.parse(stdData.data()['dateTime']);
     for (int i = 0; i < questions.length; i++) {
       stdAns.add(stdData.data()['ans$i']);
-      buildQuesAnsResultTile(questions[i], corrAns[i],stdAns[i],i);
+      buildQuesAnsResultTile(questions[i], corrAns[i], stdAns[i], i);
     }
-   Provider.of<QuizModel>(context,listen: false).setLoader(true);
+    Provider.of<QuizModel>(context, listen: false).setLoader(true);
   }
-  buildQuesAnsResultTile(String ques, String corAns, String ans,int index) {
+
+  buildQuesAnsResultTile(String ques, String corans, String ans, int index) {
     tiles.add(ListTile(
-      title: Text('$index. $ques',style: TextStyle(
-        fontSize: 16.0,fontWeight: FontWeight.bold
-      ),),
+      title: Text(
+        '$index. $ques',
+        style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
+      ),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Correct Answer: $corrAns'),
+          Text('Correct Answer: $corans'),
           SizedBox(
             height: 5.0,
           ),
@@ -76,107 +78,115 @@ class _StudentMcqsQuizReportState extends State<StudentMcqsQuizReport> {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
-            child: StreamBuilder(
-              stream: _firestore
-                  .collection('quizes')
-                  .doc(Provider.of<UserDetails>(context, listen: false)
-                      .currentClassCode)
-                  .collection('quiz')
-                  .doc(widget.quizDocId)
-                  .collection('questions')
-                  .snapshots(),
-              builder: (context, snapshot1) {
-                if (!snapshot1.hasData) {
-                  return Center(
-                    child: Text('Not available'),
-                  );
-                }
-                if (snapshot1.hasError) {
-                  return Center(child: CircularProgressIndicator());
-                }
-                final data = snapshot1.data.docs;
-                for (var ques in data) {
-                  questions.add(ques.data()['question']);
-                  corrAns.add(ques.data()['corrAns']);
-                  numOfQuestions = numOfQuestions + 1;
-                }
-                getStudentAnswers();
-                return Consumer<QuizModel>(builder: (context,child,data){
-                  return child.getLoader?Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Student Name',
-                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                      ),
-                      SizedBox(
-                        height: 4.0,
-                      ),
-                      Text(
-                        name,
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      Text(
-                        'Submitted at',
-                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                      ),
-                      SizedBox(
-                        height: 4.0,
-                      ),
-                      Text(
-                        '${submittedTime.toLocal().toString().split(' ')[0]}, ${submittedTime.hour}:${submittedTime.minute}',
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 10.0,
-                      ),  Text(
-                        'Mcq\'s question and answers',
-                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                      ),
-                      SizedBox(
-                        height: 4.0,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: tiles,
-                      ),
-                      SizedBox(
-                        height: 30.0,
-                      ),
-                      Text(
-                        'Marks Obtained by Student',
-                        style: TextStyle(fontSize: 16.0, color: Colors.black26),
-                      ),
-                      SizedBox(
-                        height: 4.0,
-                      ),
-                      Text(
-                        marks,
-                        style: TextStyle(
-                            fontSize: 22.0, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(
-                        height: 20.0,
-                      ),
-                      Text(
-                        'Attention: Marks have been calculated by system itself.',
-                        style: TextStyle(fontSize: 16.0, color: Colors.red),
-                      ),
-                    ],
-                  ):Center(child: CircularProgressIndicator(backgroundColor: Colors.indigo,));
-                }
+            child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 12.0, vertical: 10.0),
+          child: StreamBuilder(
+            stream: _firestore
+                .collection('quizes')
+                .doc(Provider.of<UserDetails>(context, listen: false)
+                    .currentClassCode)
+                .collection('quiz')
+                .doc(widget.quizDocId)
+                .collection('questions')
+                .snapshots(),
+            builder: (context, snapshot1) {
+              if (!snapshot1.hasData) {
+                return Center(
+                  child: Text('Not available'),
                 );
-              },
-            ),
-          )
-        ),
+              }
+              if (snapshot1.hasError) {
+                return Center(child: CircularProgressIndicator());
+              }
+              final data = snapshot1.data.docs;
+              for (var ques in data) {
+                questions.add(ques.data()['question']);
+                corrAns.add(ques.data()['corrAns']);
+                numOfQuestions = numOfQuestions + 1;
+              }
+              getStudentAnswers();
+              return Consumer<QuizModel>(builder: (context, child, data) {
+                return child.getLoader
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'Student Name',
+                            style: TextStyle(
+                                fontSize: 16.0, color: Colors.black26),
+                          ),
+                          SizedBox(
+                            height: 4.0,
+                          ),
+                          Text(
+                            name,
+                            style: TextStyle(
+                                fontSize: 22.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          Text(
+                            'Submitted at',
+                            style: TextStyle(
+                                fontSize: 16.0, color: Colors.black26),
+                          ),
+                          SizedBox(
+                            height: 4.0,
+                          ),
+                          Text(
+                            '${submittedTime.toLocal().toString().split(' ')[0]}, ${submittedTime.hour}:${submittedTime.minute}',
+                            style: TextStyle(
+                                fontSize: 22.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 10.0,
+                          ),
+                          Text(
+                            'Mcq\'s question and answers',
+                            style: TextStyle(
+                                fontSize: 16.0, color: Colors.black26),
+                          ),
+                          SizedBox(
+                            height: 4.0,
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: tiles,
+                          ),
+                          SizedBox(
+                            height: 30.0,
+                          ),
+                          Text(
+                            'Marks Obtained by Student',
+                            style: TextStyle(
+                                fontSize: 16.0, color: Colors.black26),
+                          ),
+                          SizedBox(
+                            height: 8.0,
+                          ),
+                          Text(
+                            marks,
+                            style: TextStyle(
+                                fontSize: 22.0, fontWeight: FontWeight.bold),
+                          ),
+                          SizedBox(
+                            height: 20.0,
+                          ),
+                          Text(
+                            'Attention: Marks have been calculated by system itself.',
+                            style: TextStyle(fontSize: 16.0, color: Colors.red),
+                          ),
+                        ],
+                      )
+                    : Center(
+                        child: CircularProgressIndicator(
+                        backgroundColor: Colors.indigo,
+                      ));
+              });
+            },
+          ),
+        )),
       ),
     );
   }

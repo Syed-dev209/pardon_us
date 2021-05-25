@@ -309,47 +309,47 @@ class _LoginPageState extends State<LoginPage> {
                                     onPressed: () async {
                                       InternetConnectivity checkNet =
                                           new InternetConnectivity();
-                                      //try {
-                                      bool net =
-                                          await checkNet.checkConnection();
-                                      if (!net) {
-                                        _onBasicAlertPressed(
-                                            context,
-                                            'No Internet Connection',
-                                            'Please check your connection before login');
-                                      }
-                                      setState(() {
-                                        showSpinner = true;
-                                      });
-                                      _login = new LogInMethods();
-                                      String check =
-                                          await _login.signinGoogle();
-                                      print(check);
-                                      if (check != 'false') {
-                                        await getUser(check);
-                                        Provider.of<UserDetails>(context,
-                                                listen: false)
-                                            .setUser(
-                                                name, email, uid, imageURl);
-                                        Navigator.push(
-                                            context, ScaleRoute(page: Start()));
+                                      try {
+                                        bool net =
+                                            await checkNet.checkConnection();
+                                        if (!net) {
+                                          _onBasicAlertPressed(
+                                              context,
+                                              'No Internet Connection',
+                                              'Please check your connection before login');
+                                        }
+                                        setState(() {
+                                          showSpinner = true;
+                                        });
+                                        _login = new LogInMethods();
+                                        String check =
+                                            await _login.signinGoogle();
+                                        print(check);
+                                        if (check != 'false') {
+                                          await getUser(check);
+                                          Provider.of<UserDetails>(context,
+                                                  listen: false)
+                                              .setUser(
+                                                  name, email, uid, imageURl);
+                                          Navigator.push(context,
+                                              ScaleRoute(page: Start()));
+                                          setState(() {
+                                            showSpinner = false;
+                                          });
+                                        } else {
+                                          _onBasicAlertPressed(context, 'Error',
+                                              'Please register yourself before log in');
+                                        }
                                         setState(() {
                                           showSpinner = false;
                                         });
-                                      } else {
-                                        _onBasicAlertPressed(context, 'Error',
-                                            'Please register yourself before log in');
+                                      } catch (e) {
+                                        setState(() {
+                                          _onBasicAlertPressed(context, 'ERROR',
+                                              'Something went wrong please try again later.');
+                                          showSpinner = false;
+                                        });
                                       }
-                                      setState(() {
-                                        showSpinner = false;
-                                      });
-                                      // } catch (e) {
-                                      //   setState(() {
-                                      //     _onBasicAlertPressed(context, 'ERROR',
-                                      //         'Something went wrong please try again later.');
-                                      //     showSpinner = false;
-                                      //   });
-                                      // }
                                     },
                                   ),
                                 ),

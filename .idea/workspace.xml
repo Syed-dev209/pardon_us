@@ -20,16 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="New call page added">
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/assignmnet_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/assignmnet_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/components/quiz_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/components/quiz_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/screens/quiz_screens/studentMcqsQuizReport.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/screens/quiz_screens/studentMcqsQuizReport.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,26 +135,26 @@
     </state>
     <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617623172284" />
     <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1621974939433" />
-    <state width="1323" height="147" key="GridCell.Tab.0.bottom" timestamp="1621973216472">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="2517" height="2" key="GridCell.Tab.0.bottom" timestamp="1621978235235">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="147" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621973216472" />
-    <state width="2517" height="452" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1621962082130" />
-    <state width="1323" height="147" key="GridCell.Tab.0.center" timestamp="1621973216471">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="2517" height="2" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
+    <state width="2517" height="2" key="GridCell.Tab.0.center" timestamp="1621978235235">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="147" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621973216471" />
-    <state width="2517" height="452" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1621962082129" />
-    <state width="1323" height="147" key="GridCell.Tab.0.left" timestamp="1621973216471">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="2517" height="2" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
+    <state width="2517" height="2" key="GridCell.Tab.0.left" timestamp="1621978235235">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="147" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621973216471" />
-    <state width="2517" height="452" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1621962082129" />
-    <state width="1323" height="147" key="GridCell.Tab.0.right" timestamp="1621973216472">
-      <screen x="0" y="0" width="1366" height="728" />
+    <state width="2517" height="2" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
+    <state width="2517" height="2" key="GridCell.Tab.0.right" timestamp="1621978235235">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state width="1323" height="147" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621973216472" />
-    <state width="2517" height="452" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621962082130" />
+    <state width="2517" height="2" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
     <state x="781" y="342" key="SettingsEditor" timestamp="1618593772231">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>

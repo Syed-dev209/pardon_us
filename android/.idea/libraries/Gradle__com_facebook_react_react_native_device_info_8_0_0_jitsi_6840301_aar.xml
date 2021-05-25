@@ -1,0 +1,14 @@
+<component name="libraryTable">
+  <library name="Gradle: com.facebook.react:react-native-device-info:8.0.0-jitsi-6840301@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bbd25370df9063af933cc31034c56080/jetified-react-native-device-info-8.0.0-jitsi-6840301/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e02e95e2da8e8222e4d95da8ff96f0ac/jetified-react-native-device-info-8.0.0-jitsi-6840301/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e02e95e2da8e8222e4d95da8ff96f0ac/jetified-react-native-device-info-8.0.0-jitsi-6840301/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/e02e95e2da8e8222e4d95da8ff96f0ac/jetified-react-native-device-info-8.0.0-jitsi-6840301/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.react/react-native-device-info/8.0.0-jitsi-6840301/2381ce7e03acceb12ea08faf12eb7e822bf3f5cd/react-native-device-info-8.0.0-jitsi-6840301-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

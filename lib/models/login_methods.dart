@@ -18,7 +18,7 @@ class LogInMethods {
 
   Future<String> loginGoogle() async {
     String uid;
-    googleSignOut();
+   await googleSignOut();
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     GoogleSignInAuthentication gsa = await googleSignInAccount.authentication;
     AuthCredential credentials = GoogleAuthProvider.credential(
@@ -48,6 +48,7 @@ class LogInMethods {
   }
 
   Future<String> signinGoogle() async {
+    await googleSignOut();
     String uid, email;
     GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
     GoogleSignInAuthentication gsa = await googleSignInAccount.authentication;

@@ -118,7 +118,6 @@ class LogInMethods {
     for (var i in userCheck.docs) {
       uid = i.id;
     }
-
     if (uid == null) {
       final newUser = await _auth
           .createUserWithEmailAndPassword(email: email, password: password)

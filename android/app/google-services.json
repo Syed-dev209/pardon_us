@@ -15,7 +15,15 @@
       },
       "oauth_client": [
         {
-          "client_id": "647268017952-cacq3of05rbe8ruaatft307ugqk3m7im.apps.googleusercontent.com",
+          "client_id": "647268017952-hdjsph52vkq8n9dle74d3p30cbnqgrr6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "ilhan.com.pardon_us",
+            "certificate_hash": "59e01efefcc17791cd4e99202a78497ad894c060"
+          }
+        },
+        {
+          "client_id": "647268017952-o7imlmssi42sm5ekuovvb74jq8jerj3g.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "ilhan.com.pardon_us",

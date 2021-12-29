@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,14 +23,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c5ff551b-e4e8-4209-af20-6697203af8d5" name="Default Changelist" comment="New call page added">
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[5HR6R19304004752]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[/Users/ilhan/.android/avd/Pixel_2_API_31.avd]" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -52,7 +65,7 @@
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../pardon_us" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="SDKs" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
@@ -72,6 +85,7 @@
       <recent name="E:\ilhan flutter\New Fyp\pardon_us\web\icons" />
     </key>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -108,61 +122,5 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="New call page added" />
     <option name="LAST_COMMIT_MESSAGE" value="New call page added" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="929" y="445" key="#Console" timestamp="1618584094624">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="929" y="445" key="#Console/0.0.2560.1400@0.0.2560.1400" timestamp="1618584094624" />
-    <state x="952" y="624" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1615795749209">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="952" y="624" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1615795749209" />
-    <state x="92" y="92" width="1182" height="544" key="AVDManager" timestamp="1621967083708">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="92" y="92" width="1182" height="544" key="AVDManager/0.0.1366.728@0.0.1366.728" timestamp="1621967083708" />
-    <state x="1099" y="446" key="AndroidProcessChooserDialog" timestamp="1621786338553">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="1099" y="446" key="AndroidProcessChooserDialog/0.0.2560.1400@0.0.2560.1400" timestamp="1621786338553" />
-    <state x="310" y="0" key="CommitChangelistDialog2" timestamp="1614589004656">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="310" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1614589004656" />
-    <state x="1060" y="455" key="FileChooserDialogImpl" timestamp="1621974939433">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="566" y="210" key="FileChooserDialogImpl/0.0.1366.728@0.0.1366.728" timestamp="1617623172284" />
-    <state x="1060" y="455" key="FileChooserDialogImpl/0.0.2560.1400@0.0.2560.1400" timestamp="1621974939433" />
-    <state width="2517" height="2" key="GridCell.Tab.0.bottom" timestamp="1621978235235">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1323" height="147" key="GridCell.Tab.0.bottom/0.0.1366.728@0.0.1366.728" timestamp="1621973216472" />
-    <state width="2517" height="2" key="GridCell.Tab.0.bottom/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
-    <state width="2517" height="2" key="GridCell.Tab.0.center" timestamp="1621978235235">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1323" height="147" key="GridCell.Tab.0.center/0.0.1366.728@0.0.1366.728" timestamp="1621973216471" />
-    <state width="2517" height="2" key="GridCell.Tab.0.center/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
-    <state width="2517" height="2" key="GridCell.Tab.0.left" timestamp="1621978235235">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1323" height="147" key="GridCell.Tab.0.left/0.0.1366.728@0.0.1366.728" timestamp="1621973216471" />
-    <state width="2517" height="2" key="GridCell.Tab.0.left/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
-    <state width="2517" height="2" key="GridCell.Tab.0.right" timestamp="1621978235235">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state width="1323" height="147" key="GridCell.Tab.0.right/0.0.1366.728@0.0.1366.728" timestamp="1621973216472" />
-    <state width="2517" height="2" key="GridCell.Tab.0.right/0.0.2560.1400@0.0.2560.1400" timestamp="1621978235235" />
-    <state x="781" y="342" key="SettingsEditor" timestamp="1618593772231">
-      <screen x="0" y="0" width="2560" height="1400" />
-    </state>
-    <state x="7" y="17" key="SettingsEditor/0.0.1366.728@0.0.1366.728" timestamp="1614513094998" />
-    <state x="781" y="342" key="SettingsEditor/0.0.2560.1400@0.0.2560.1400" timestamp="1618593772231" />
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup" timestamp="1614524003953">
-      <screen x="0" y="0" width="1366" height="728" />
-    </state>
-    <state x="346" y="49" width="672" height="678" key="search.everywhere.popup/0.0.1366.728@0.0.1366.728" timestamp="1614524003953" />
   </component>
 </project>
